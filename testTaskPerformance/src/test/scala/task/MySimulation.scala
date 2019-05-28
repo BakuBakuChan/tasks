@@ -2,7 +2,6 @@ package testTaskPerformance
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
-import io.gatling.core.Predef.RampBuilder
 import mySessions._
 import Steps._
 
@@ -34,6 +33,6 @@ class MySimulation extends Simulation{
     )
 
  setUp(myScenario.inject(atOnceUsers(1))).protocols(httpProtocol)
-  //setUp(myScenario.inject(rampUsers(20) over (5 minutes))).protocols(httpProtocol).maxDuration(6)
+  //setUp(myScenario.inject(rampUsers(20) over (5 minutes)).protocols(httpProtocol)).maxDuration(6)
 
 }
