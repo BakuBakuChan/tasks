@@ -8,6 +8,10 @@ import Steps._
 
 class MySimulation extends Simulation{
 
+  val lowerPause = 1
+  val midlePause = 2
+  val higherPause = 3
+
   val httpProtocol = http
     .baseUrl("https://challengers.flood.io")
     .inferHtmlResources()
@@ -18,15 +22,15 @@ class MySimulation extends Simulation{
 
   val myScenario = scenario("MyTestSimulation")
     .exec(
-      Steps.startTest .pause(1),
-      Steps.stepOne .pause(1,2),
-      Steps.stepTwo .pause(1,3),
-      mySessions.getMaxValueAndRadioForMaxValue .pause(1,2),
-      Steps.stepThree .pause(1,3),
-      mySessions.getListOfNamesAndValue .pause(1,2),
-      Steps.stepFour .pause(1,2),
-      Steps.getOneTimeTokenForStepFive .pause(1,3),
-      Steps.stepFive .pause(1,2)
+      Steps.startTest .pause(lowerPause),
+      Steps.stepOne .pause(lowerPause,midlePause),
+      Steps.stepTwo .pause(lowerPause,higherPause),
+      mySessions.getMaxValueAndRadioForMaxValue .pause(lowerPause,midlePause),
+      Steps.stepThree .pause(lowerPause),
+      mySessions.getListOfNamesAndValue .pause(lowerPause,midlePause),
+      Steps.stepFour .pause(lowerPause,midlePause),
+      Steps.getOneTimeTokenForStepFive .pause(lowerPause,higherPause),
+      Steps.stepFive .pause(lowerPause,midlePause)
     )
 
  setUp(myScenario.inject(atOnceUsers(1))).protocols(httpProtocol)
