@@ -2,6 +2,9 @@ package testTaskPerformance
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
+import scala.concurrent.duration._
+import io.gatling.core.session._
+import io.gatling.core.structure._
 import mySessions._
 import Steps._
 
@@ -32,7 +35,7 @@ class MySimulation extends Simulation{
       Steps.stepFive .pause(lowerPause,midlePause)
     )
 
- setUp(myScenario.inject(atOnceUsers(1))).protocols(httpProtocol)
-  //setUp(myScenario.inject(rampUsers(20) over (5 minutes)).protocols(httpProtocol)).maxDuration(6)
+ //setUp(myScenario.inject(atOnceUsers(1))).protocols(httpProtocol)
+  setUp(myScenario.inject(rampUsers(100) during (2 minutes))).protocols(httpProtocol)
 
 }
