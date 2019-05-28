@@ -23,7 +23,8 @@ class MySimulation extends Simulation{
     .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0")
 
   val myScenario = scenario("MyTestSimulation")
-    .exec(
+  .during(2000){
+    exec(
       Steps.startTest .pause(lowerPause),
       Steps.stepOne .pause(lowerPause,midlePause),
       Steps.stepTwo .pause(lowerPause,higherPause),
@@ -32,10 +33,12 @@ class MySimulation extends Simulation{
       mySessions.getListOfNamesAndValue .pause(lowerPause,midlePause),
       Steps.stepFour .pause(lowerPause,midlePause),
       Steps.getOneTimeTokenForStepFive .pause(lowerPause,higherPause),
-      Steps.stepFive .pause(lowerPause,midlePause)
-    )
+      Steps.stepFive .pause(lowerPause,midlePause))}
+
 
  //setUp(myScenario.inject(atOnceUsers(1))).protocols(httpProtocol)
-  setUp(myScenario.inject(rampUsers(100) during (2 minutes))).protocols(httpProtocol)
-
+  setUp(myScenario.inject(rampUsers(1) during (5 minutes)))
+    .protocols(httpProtocol)
+//    .maxDuration(6 minutes)
+//    .throttle(holdFor(1 minutes))
 }
