@@ -17,7 +17,6 @@ object Steps{
 
       .check(css("#new_challenger > div > input[type=hidden]:nth-child(2)", "value").saveAs("token"))
       .check(css("#challenger_step_id", "value").saveAs("step_id")))
-    .pause(2)
 
   val stepOne = exec(
     http("Click_On_Start_Button")
@@ -32,7 +31,7 @@ object Steps{
       .check(currentLocation.is("https://challengers.flood.io/step/2"))
 
       .check(css("#challenger_step_id", "value").saveAs("step_id")))
-    .pause(2)
+
 
 
   val stepTwo = exec(
@@ -51,7 +50,7 @@ object Steps{
       .check(css("#challenger_step_id", "value").saveAs("step_id"))
       .check(css("input[type='radio']", "value").findAll.saveAs("listOfIds"))
       .check(regex("<label .*>(\\d{1,3})").findAll.saveAs("listOfNumbers")))
-    .pause(2)
+
 
   val stepThree = exec(
     http("Step_Three")
@@ -70,7 +69,7 @@ object Steps{
       .check(css("#challenger_step_id", "value").saveAs("step_id"))
       .check(regex("challenger_order.*name=\"(challenger.+)\" type").findAll.saveAs("challengerOrdersList"))
       .check(regex("challenger_order.*name=\"challenger.*value=\"(\\d+)").findAll.saveAs("valuesList")))
-    .pause(2)
+
 
 
   val stepFour = exec(
@@ -95,10 +94,7 @@ object Steps{
       .check(status is (200))
       .check(currentLocation.is("https://challengers.flood.io/step/5"))
 
-      .check(css("#challenger_step_id", "value").saveAs("step_id"))
-  )
-    .pause(2)
-
+      .check(css("#challenger_step_id", "value").saveAs("step_id")))
 
   val getOneTimeTokenForStepFive = exec(
     http("Get_One_Time_Token")
@@ -108,7 +104,6 @@ object Steps{
       .check(status is (200))
 
       .check(jsonPath("$.code").ofType[String].saveAs("tokkenOnPage")))
-    .pause(2)
 
   val stepFive = exec(
     http("Step_Five")
@@ -121,5 +116,5 @@ object Steps{
       .formParam("commit", "Next")
       .check(status is (200))
       .check(currentLocation.is("https://challengers.flood.io/done")))
-    .pause(2)
+
 }
