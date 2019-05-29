@@ -6,7 +6,6 @@ import io.gatling.http.Predef._
 object mySessions{
   val getMaxValueAndRadioForMaxValue = exec { session: Session =>
     val mListNumbers = session("listOfNumbers").as[List[String]].map(_.toInt)
-    val newList = mListNumbers.map(_.toString.toInt)
     val maxNumber = mListNumbers.max
     val radiosList = session("listOfIds").as[Seq[String]]
     val radioChecked = radiosList(mListNumbers.indexOf(maxNumber))
