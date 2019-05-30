@@ -4,7 +4,6 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 
 object Steps {
-
   /** **********************************************************************************/
   /*HEADERS*/
   val defaltHeaders = Map("Upgrade-Insecure-Requests" -> "1")
@@ -32,7 +31,7 @@ object Steps {
     , ("${challengerOrdersList9}", "${valuesList1}")
     , ("${challengerOrdersList10}", "${valuesList1}"))
 
-  /** **********************************************************************************/
+  /************************************************************************************/
 
   /*RESPONSE BODIES*/
   var requestStartTest =
@@ -53,7 +52,7 @@ object Steps {
       .headers(defaltHeaders)
       .formParamMap(paramsInEveryStep)
       .formParam("challenger[step_number]", "2")
-      .formParam("challenger[age]", "20")
+      .formParam("challenger[age]", "${age}") //"${age}"
 
   var requestStepThree =
     http("Step_Three")
@@ -69,7 +68,17 @@ object Steps {
       .post("/start")
       .headers(defaltHeaders)
       .formParamMap(paramsInEveryStep)
-      .formParamMap(paramMapForFourStep)
+      //.formParamMap(paramMapForFourStep)no idea why it doesnt work
+      .formParam("${challengerOrdersList1}", "${valuesList1}")
+      .formParam("${challengerOrdersList2}", "${valuesList1}")
+      .formParam("${challengerOrdersList3}", "${valuesList1}")
+      .formParam("${challengerOrdersList4}", "${valuesList1}")
+      .formParam("${challengerOrdersList5}", "${valuesList1}")
+      .formParam("${challengerOrdersList6}", "${valuesList1}")
+      .formParam("${challengerOrdersList7}", "${valuesList1}")
+      .formParam("${challengerOrdersList8}", "${valuesList1}")
+      .formParam("${challengerOrdersList9}", "${valuesList1}")
+      .formParam("${challengerOrdersList10}", "${valuesList1}")
       .formParam("challenger[step_number]", "4")
 
   var requestGetOneTimeTokenForStepFive =

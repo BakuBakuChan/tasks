@@ -28,4 +28,10 @@ object mySessions{
       .set("challengerOrdersList10", ordersList(9))
       .set("valuesList1", valuesList(0))
   }
+
+  val debugFeeder = exec { session: Session =>
+    val age = session("age").as[Int]
+    println(age)
+    session.set("debug","debug")
+  }
 }

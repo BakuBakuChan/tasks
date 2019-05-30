@@ -5,14 +5,24 @@ import io.gatling.http.Predef._
 
 import scala.concurrent.duration._
 
+
 class MySimulation extends Simulation {
 
+  /*PAUSES*/
   val lowerPause = 1
   val midlePause = 2
   val higherPause = 3
+  /** **********************************************************************************/
+
+  /*SECCION AND SCENARIO VARIABLES*/
   val numberOUsers = 1
-  val durationOfAllTest = 5
-  val durationForScenario = 2000
+  val durationOfAllTest = 1
+  val durationForScenario = 200
+  /** **********************************************************************************/
+
+  /*FEEDERS*/
+  val jsonFileFeeder = jsonFile("ageFile.json").random
+  /** **********************************************************************************/
 
 
   val httpProtocol = http
@@ -25,18 +35,10 @@ class MySimulation extends Simulation {
 
   val myScenario = scenario("MyTestSimulation")
     .during(durationForScenario) {
-      //      exec(
-      //        Steps.startTest.pause(lowerPause),
-      //        Steps.stepOne.pause(lowerPause, midlePause),
-      //        Steps.stepTwo.pause(lowerPause, higherPause),
-      //        mySessions.getMaxValueAndRadioForMaxValue.pause(lowerPause, midlePause),
-      //        Steps.stepThree.pause(lowerPause),
-      //        mySessions.getListOfNamesAndValue.pause(lowerPause, midlePause),
-      //        Steps.stepFour.pause(lowerPause, midlePause),
-      //        Steps.getOneTimeTokenForStepFive.pause(lowerPause, higherPause),
-      //        Steps.stepFive.pause(lowerPause, midlePause))
       exec(Steps.startTest).pause(lowerPause)
         .exec(Steps.stepOne).pause(lowerPause, midlePause)
+        .feed(jsonFileFeeder)
+        //.exec(mySessions.debugFeeder)
         .exec(Steps.stepTwo).pause(lowerPause, higherPause)
         .exec(mySessions.getMaxValueAndRadioForMaxValue).pause(lowerPause, midlePause)
         .exec(Steps.stepThree).pause(lowerPause)
