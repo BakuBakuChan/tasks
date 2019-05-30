@@ -15,9 +15,10 @@ class MySimulation extends Simulation {
   /** **********************************************************************************/
 
   /*SECCION AND SCENARIO VARIABLES*/
-  val numberOUsers = 1
-  val durationOfAllTest = 1
-  val durationForScenario = 200
+  val t_numberOUsers = Integer.getInteger("numberOUsers", 10).toInt
+  val t_durationForScenario = Integer.getInteger("durationForScenario", 60).toInt
+  val t_durationOfAllTest = Integer.getInteger("durationOfAllTest", 60).toInt
+
   /** **********************************************************************************/
 
   /*FEEDERS*/
@@ -34,11 +35,10 @@ class MySimulation extends Simulation {
     .userAgentHeader("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0")
 
   val myScenario = scenario("MyTestSimulation")
-    .during(durationForScenario) {
+    .during(t_durationForScenario) {
       exec(Steps.startTest).pause(lowerPause)
         .exec(Steps.stepOne).pause(lowerPause, midlePause)
         .feed(jsonFileFeeder)
-        //.exec(mySessions.debugFeeder)
         .exec(Steps.stepTwo).pause(lowerPause, higherPause)
         .exec(mySessions.getMaxValueAndRadioForMaxValue).pause(lowerPause, midlePause)
         .exec(Steps.stepThree).pause(lowerPause)
@@ -48,6 +48,6 @@ class MySimulation extends Simulation {
         .exec(Steps.stepFive).pause(lowerPause, midlePause)
     }
 
-  setUp(myScenario.inject(rampUsers(numberOUsers) during (durationOfAllTest minutes)))
+  setUp(myScenario.inject(rampUsers(t_numberOUsers) during (t_durationOfAllTest minutes)))
     .protocols(httpProtocol)
 }

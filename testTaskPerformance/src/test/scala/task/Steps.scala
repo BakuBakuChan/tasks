@@ -20,8 +20,8 @@ object Steps {
     , ("authenticity_token", "${token}")
     , ("challenger[step_id]", "${step_id}"))
 
-  var paramMapForFourStep = Map(("${challengerOrdersList1}", "${valuesList1}")
-    , ("${challengerOrdersList2}", "${valuesList1}")
+  var paramMapForFourStep = Map("${challengerOrdersList1}" -> "${valuesList1}"
+    , ("${challengerOrdersList2}","${valuesList1}")
     , ("${challengerOrdersList3}", "${valuesList1}")
     , ("${challengerOrdersList4}", "${valuesList1}")
     , ("${challengerOrdersList5}", "${valuesList1}")
@@ -68,7 +68,7 @@ object Steps {
       .post("/start")
       .headers(defaltHeaders)
       .formParamMap(paramsInEveryStep)
-      //.formParamMap(paramMapForFourStep)no idea why it doesnt work
+//      .formParamMap(paramMapForFourStep)
       .formParam("${challengerOrdersList1}", "${valuesList1}")
       .formParam("${challengerOrdersList2}", "${valuesList1}")
       .formParam("${challengerOrdersList3}", "${valuesList1}")
