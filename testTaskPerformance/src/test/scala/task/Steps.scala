@@ -21,7 +21,7 @@ object Steps {
     , ("challenger[step_id]", "${step_id}"))
 
   var paramMapForFourStep = Map("${challengerOrdersList1}" -> "${valuesList1}"
-    , ("${challengerOrdersList2}","${valuesList1}")
+    , ("${challengerOrdersList2}", "${valuesList1}")
     , ("${challengerOrdersList3}", "${valuesList1}")
     , ("${challengerOrdersList4}", "${valuesList1}")
     , ("${challengerOrdersList5}", "${valuesList1}")
@@ -31,30 +31,30 @@ object Steps {
     , ("${challengerOrdersList9}", "${valuesList1}")
     , ("${challengerOrdersList10}", "${valuesList1}"))
 
-  /************************************************************************************/
+  /** **********************************************************************************/
 
   /*RESPONSE BODIES*/
-  var requestStartTest =
+  var requestGetStartTest =
   http("Open_Start_Page")
     .get("/")
     .headers(defaltHeaders)
 
-  var requestStepOne =
+  var requestPostStepOne =
     http("Click_On_Start_Button")
       .post("/start")
       .headers(defaltHeaders)
       .formParamMap(paramsInEveryStep)
       .formParam("challenger[step_number]", "1")
 
-  var requestStepTwo =
+  var requestPostStepTwo =
     http("Step_Two")
       .post("/start")
       .headers(defaltHeaders)
       .formParamMap(paramsInEveryStep)
       .formParam("challenger[step_number]", "2")
-      .formParam("challenger[age]", "${age}") //"${age}"
+      .formParam("challenger[age]", "${age}")
 
-  var requestStepThree =
+  var requestPostStepThree =
     http("Step_Three")
       .post("/start")
       .headers(defaltHeaders)
@@ -63,12 +63,12 @@ object Steps {
       .formParam("challenger[largest_order]", "${challenger_largest_order}")
       .formParam("challenger[order_selected]", "${challenger_order_selected}")
 
-  var requestStepFour =
+  var requestPostStepFour =
     http("Step_Four")
       .post("/start")
       .headers(defaltHeaders)
       .formParamMap(paramsInEveryStep)
-//      .formParamMap(paramMapForFourStep)
+      //      .formParamMap(paramMapForFourStep)
       .formParam("${challengerOrdersList1}", "${valuesList1}")
       .formParam("${challengerOrdersList2}", "${valuesList1}")
       .formParam("${challengerOrdersList3}", "${valuesList1}")
@@ -86,7 +86,7 @@ object Steps {
       .get("/code")
       .headers(headersForGetOneTimeTokenForStepFive)
 
-  var requestStepFive =
+  var requestPostStepFive =
     http("Step_Five")
       .post("/start")
       .headers(defaltHeaders)
@@ -94,19 +94,62 @@ object Steps {
       .formParam("challenger[step_number]", "5")
       .formParam("challenger[one_time_token]", "${tokkenOnPage}")
 
+  var requestGetStepTwo =
+    http("Get_Step_Two")
+      .get("/step/2")
+      .headers(defaltHeaders)
+
+  var requestGetStepThree =
+    http("Get_Step_Tree")
+      .get("/step/3")
+      .headers(defaltHeaders)
+
+  var requestGetStepFour =
+    http("Get_Step_Foure")
+      .get("/step/4")
+      .headers(defaltHeaders)
+
+  var requestGetStepFive =
+    http("Get_Step_Five")
+      .get("/step/5")
+      .headers(defaltHeaders)
+
+  var requestGetDone =
+    http("Get_Done_Page")
+      .get("/done")
+      .headers(defaltHeaders)
+
+  /** **********************************************************************************/
+  /*POST REQUESTS*/
+  var PostStepOne = exec(requestPostStepOne
+    .check(status is (302)))
+
+  var PostStepTwo = exec(requestPostStepTwo
+    .check(status is (302)))
+
+  var PostStepThree = exec(requestPostStepThree
+    .check(status is (302)))
+
+  var PostStepFour = exec(requestPostStepFour
+    .check(status is (302)))
+
+  var PostStepFive = exec(requestPostStepFive
+    .check(status is (302)))
+
   /** **********************************************************************************/
 
-  /*REQUESTS WITH CHECKS*/
+  /*GET REQUESTS WITH CHECKS*/
   val startTest = exec(
-    requestStartTest
+    requestGetStartTest
 
       .check(status is (200))
 
       .check(css("#new_challenger > div > input[type=hidden]:nth-child(2)", "value").saveAs("token"))
       .check(css("#challenger_step_id", "value").saveAs("step_id")))
 
+
   val stepOne = exec(
-    requestStepOne
+    requestGetStepTwo
 
       .check(status is (200))
       .check(currentLocation.is("https://challengers.flood.io/step/2"))
@@ -114,7 +157,7 @@ object Steps {
       .check(css("#challenger_step_id", "value").saveAs("step_id")))
 
   val stepTwo = exec(
-    requestStepTwo
+    requestGetStepThree
 
       .check(status is (200))
       .check(currentLocation.is("https://challengers.flood.io/step/3"))
@@ -124,7 +167,7 @@ object Steps {
       .check(regex("<label .*>(\\d{1,3})").findAll.saveAs("listOfNumbers")))
 
   val stepThree = exec(
-    requestStepThree
+    requestGetStepFour
 
       .check(status is (200))
       .check(currentLocation.is("https://challengers.flood.io/step/4"))
@@ -134,7 +177,7 @@ object Steps {
       .check(regex("challenger_order.*name=\"challenger.*value=\"(\\d+)").findAll.saveAs("valuesList")))
 
   val stepFour = exec(
-    requestStepFour
+    requestGetStepFive
 
       .check(status is (200))
       .check(currentLocation.is("https://challengers.flood.io/step/5"))
@@ -149,7 +192,7 @@ object Steps {
       .check(jsonPath("$.code").ofType[String].saveAs("tokkenOnPage")))
 
   val stepFive = exec(
-    requestStepFive
+    requestGetDone
 
       .check(status is (200))
       .check(currentLocation.is("https://challengers.flood.io/done")))
