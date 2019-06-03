@@ -56,18 +56,18 @@
         <longProp name="ThreadGroup.start_time">1370726934000</longProp>
         <longProp name="ThreadGroup.end_time">1370726934000</longProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
-        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.duration">120</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
         <RecordingController guiclass="RecordController" testclass="RecordingController" testname="Recording Controller" enabled="true"/>
         <hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Open main page tran work" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Open_Start_Page_Transaction" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="open main page" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Open_Start_Page" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
@@ -172,7 +172,7 @@
                 <stringProp name="filename"></stringProp>
               </ResultCollector>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="code check" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="check_status_code" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="49586">200</stringProp>
                 </collectionProp>
@@ -184,12 +184,12 @@
               <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="start test tran work" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Click_On_Start_Button_Transaction" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="start test" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Click_On_Start_Button_Post" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="utf8" elementType="HTTPArgument">
@@ -235,7 +235,7 @@
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
               <stringProp name="HTTPSampler.path">/start</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
               <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
               <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
@@ -278,16 +278,6 @@
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <HtmlExtractor guiclass="HtmlExtractorGui" testclass="HtmlExtractor" testname="step id" enabled="true">
-                <stringProp name="HtmlExtractor.refname">step_id</stringProp>
-                <stringProp name="HtmlExtractor.expr">#challenger_step_id</stringProp>
-                <stringProp name="HtmlExtractor.attribute">value</stringProp>
-                <stringProp name="HtmlExtractor.default"></stringProp>
-                <boolProp name="HtmlExtractor.default_empty_value">false</boolProp>
-                <stringProp name="HtmlExtractor.match_number"></stringProp>
-                <stringProp name="HtmlExtractor.extractor_impl"></stringProp>
-              </HtmlExtractor>
-              <hashTree/>
               <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
                 <boolProp name="ResultCollector.error_logging">false</boolProp>
                 <objProp>
@@ -325,17 +315,27 @@
                 <stringProp name="filename"></stringProp>
               </ResultCollector>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="code check" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.custom_message"></stringProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">16</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="is number of step present" enabled="true">
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_Step_Two" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">challengers.flood.io</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/step/2</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="check_number_of_step" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="-1808501762">Step 2</stringProp>
                 </collectionProp>
@@ -345,14 +345,34 @@
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
               <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="check_status_code" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">16</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <HtmlExtractor guiclass="HtmlExtractorGui" testclass="HtmlExtractor" testname="step_id" enabled="true">
+                <stringProp name="HtmlExtractor.refname">step_id</stringProp>
+                <stringProp name="HtmlExtractor.expr">#challenger_step_id</stringProp>
+                <stringProp name="HtmlExtractor.attribute">value</stringProp>
+                <stringProp name="HtmlExtractor.default"></stringProp>
+                <boolProp name="HtmlExtractor.default_empty_value">false</boolProp>
+                <stringProp name="HtmlExtractor.match_number"></stringProp>
+                <stringProp name="HtmlExtractor.extractor_impl"></stringProp>
+              </HtmlExtractor>
+              <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="enter age work" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Step_Two_Transaction" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="enter age" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Step_Two_Post" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="utf8" elementType="HTTPArgument">
@@ -405,13 +425,13 @@
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
               <stringProp name="HTTPSampler.path">/start</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
               <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
               <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
               <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout">2000</stringProp>
               <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             </HTTPSamplerProxy>
             <hashTree>
@@ -447,16 +467,6 @@
                   </elementProp>
                 </collectionProp>
               </HeaderManager>
-              <hashTree/>
-              <HtmlExtractor guiclass="HtmlExtractorGui" testclass="HtmlExtractor" testname="step id" enabled="true">
-                <stringProp name="HtmlExtractor.refname">step_id</stringProp>
-                <stringProp name="HtmlExtractor.expr">#challenger_step_id</stringProp>
-                <stringProp name="HtmlExtractor.attribute">value</stringProp>
-                <stringProp name="HtmlExtractor.default"></stringProp>
-                <boolProp name="HtmlExtractor.default_empty_value">false</boolProp>
-                <stringProp name="HtmlExtractor.match_number"></stringProp>
-                <stringProp name="HtmlExtractor.extractor_impl"></stringProp>
-              </HtmlExtractor>
               <hashTree/>
               <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
                 <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -495,7 +505,37 @@
                 <stringProp name="filename"></stringProp>
               </ResultCollector>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="code check" enabled="true">
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_Step_Three" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">challengers.flood.io</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/step/3</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HtmlExtractor guiclass="HtmlExtractorGui" testclass="HtmlExtractor" testname="step id" enabled="true">
+                <stringProp name="HtmlExtractor.refname">step_id</stringProp>
+                <stringProp name="HtmlExtractor.expr">#challenger_step_id</stringProp>
+                <stringProp name="HtmlExtractor.attribute">value</stringProp>
+                <stringProp name="HtmlExtractor.default"></stringProp>
+                <boolProp name="HtmlExtractor.default_empty_value">false</boolProp>
+                <stringProp name="HtmlExtractor.match_number"></stringProp>
+                <stringProp name="HtmlExtractor.extractor_impl"></stringProp>
+              </HtmlExtractor>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="check_status_code" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="49586">200</stringProp>
                 </collectionProp>
@@ -505,7 +545,7 @@
                 <intProp name="Assertion.test_type">16</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="not error" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="check_not_error_page" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="-1320196033">Looks like you didn&apos;t complete the steps correctly. At least you have a nice error page. Please try again.</stringProp>
                 </collectionProp>
@@ -515,7 +555,7 @@
                 <intProp name="Assertion.test_type">6</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="is number of step present" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="check_number_of_step" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="-1808501761">Step 3</stringProp>
                 </collectionProp>
@@ -526,7 +566,7 @@
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
-            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="max val and radio" enabled="true">
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="get_max_value_and_radio_button" enabled="true">
               <stringProp name="scriptLanguage">groovy</stringProp>
               <stringProp name="parameters"></stringProp>
               <stringProp name="filename"></stringProp>
@@ -544,12 +584,12 @@ vars.put(&quot;radio&quot;,challenger_order_selected)
             </JSR223PostProcessor>
             <hashTree/>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="enter max tran work" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Step_Three_Transaction" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="enter max" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Step_Three_Post" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="utf8" elementType="HTTPArgument">
@@ -609,13 +649,13 @@ vars.put(&quot;radio&quot;,challenger_order_selected)
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
               <stringProp name="HTTPSampler.path">/start</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
               <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
               <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
               <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout">2000</stringProp>
               <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             </HTTPSamplerProxy>
             <hashTree>
@@ -651,25 +691,6 @@ vars.put(&quot;radio&quot;,challenger_order_selected)
                   </elementProp>
                 </collectionProp>
               </HeaderManager>
-              <hashTree/>
-              <HtmlExtractor guiclass="HtmlExtractorGui" testclass="HtmlExtractor" testname="step id" enabled="true">
-                <stringProp name="HtmlExtractor.refname">step_id</stringProp>
-                <stringProp name="HtmlExtractor.expr">#challenger_step_id</stringProp>
-                <stringProp name="HtmlExtractor.attribute">value</stringProp>
-                <stringProp name="HtmlExtractor.default"></stringProp>
-                <boolProp name="HtmlExtractor.default_empty_value">false</boolProp>
-                <stringProp name="HtmlExtractor.match_number"></stringProp>
-                <stringProp name="HtmlExtractor.extractor_impl"></stringProp>
-              </HtmlExtractor>
-              <hashTree/>
-              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="order val" enabled="true">
-                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
-                <stringProp name="RegexExtractor.refname">order_val</stringProp>
-                <stringProp name="RegexExtractor.regex">&quot;challenger_order.*name=\&quot;challenger.*value=\&quot;(\d+)</stringProp>
-                <stringProp name="RegexExtractor.template">$1$</stringProp>
-                <stringProp name="RegexExtractor.default"></stringProp>
-                <stringProp name="RegexExtractor.match_number"></stringProp>
-              </RegexExtractor>
               <hashTree/>
               <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
                 <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -708,27 +729,36 @@ vars.put(&quot;radio&quot;,challenger_order_selected)
                 <stringProp name="filename"></stringProp>
               </ResultCollector>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="code check" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.custom_message"></stringProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">16</intProp>
-              </ResponseAssertion>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_Step_Foure" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">challengers.flood.io</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/step/4</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="order val" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">order_val</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;challenger_order.*name=\&quot;challenger.*value=\&quot;(\d+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default"></stringProp>
+                <stringProp name="RegexExtractor.match_number"></stringProp>
+              </RegexExtractor>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="not error" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="-1320196033">Looks like you didn&apos;t complete the steps correctly. At least you have a nice error page. Please try again.</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.custom_message"></stringProp>
-                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">6</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="is number of step present" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="check_number_of_step" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="-1808501760">Step 4</stringProp>
                 </collectionProp>
@@ -738,14 +768,44 @@ vars.put(&quot;radio&quot;,challenger_order_selected)
                 <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
               <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="check_not_error_page" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-1320196033">Looks like you didn&apos;t complete the steps correctly. At least you have a nice error page. Please try again.</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">6</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="check_status_code" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">16</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <HtmlExtractor guiclass="HtmlExtractorGui" testclass="HtmlExtractor" testname="step id" enabled="true">
+                <stringProp name="HtmlExtractor.refname">step_id</stringProp>
+                <stringProp name="HtmlExtractor.expr">#challenger_step_id</stringProp>
+                <stringProp name="HtmlExtractor.attribute">value</stringProp>
+                <stringProp name="HtmlExtractor.default"></stringProp>
+                <boolProp name="HtmlExtractor.default_empty_value">false</boolProp>
+                <stringProp name="HtmlExtractor.match_number"></stringProp>
+                <stringProp name="HtmlExtractor.extractor_impl"></stringProp>
+              </HtmlExtractor>
+              <hashTree/>
             </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="enter set tran work" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Step_Four_Transaction" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="enter set" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Step_Four_Post" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="utf8" elementType="HTTPArgument">
@@ -861,16 +921,31 @@ vars.put(&quot;radio&quot;,challenger_order_selected)
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
               <stringProp name="HTTPSampler.path">/start</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
               <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
               <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
               <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout">2000</stringProp>
               <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             </HTTPSamplerProxy>
             <hashTree>
+              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="orders" enabled="true">
+                <stringProp name="scriptLanguage">groovy</stringProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="cacheKey">true</stringProp>
+                <stringProp name="script">def requestBody = prev.getResponseDataAsString();
+def m = requestBody =~/challenger_order.*name=&quot;(challenger.*?)&quot;/
+def orders = []
+(0..&lt;m.count).each{
+	orders.add(m[it][1])}
+for(int i = 0;i&lt;m.count;i++) {
+        vars.put(&quot;order&quot;+i,orders[i])
+      }</stringProp>
+              </JSR223PreProcessor>
+              <hashTree/>
               <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
                 <collectionProp name="HeaderManager.headers">
                   <elementProp name="Referer" elementType="Header">
@@ -903,31 +978,6 @@ vars.put(&quot;radio&quot;,challenger_order_selected)
                   </elementProp>
                 </collectionProp>
               </HeaderManager>
-              <hashTree/>
-              <HtmlExtractor guiclass="HtmlExtractorGui" testclass="HtmlExtractor" testname="step id" enabled="true">
-                <stringProp name="HtmlExtractor.refname">step_id</stringProp>
-                <stringProp name="HtmlExtractor.expr">#challenger_step_id</stringProp>
-                <stringProp name="HtmlExtractor.attribute">value</stringProp>
-                <stringProp name="HtmlExtractor.default"></stringProp>
-                <boolProp name="HtmlExtractor.default_empty_value">false</boolProp>
-                <stringProp name="HtmlExtractor.match_number"></stringProp>
-                <stringProp name="HtmlExtractor.extractor_impl"></stringProp>
-              </HtmlExtractor>
-              <hashTree/>
-              <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="orders" enabled="true">
-                <stringProp name="scriptLanguage">groovy</stringProp>
-                <stringProp name="parameters"></stringProp>
-                <stringProp name="filename"></stringProp>
-                <stringProp name="cacheKey">true</stringProp>
-                <stringProp name="script">def requestBody = prev.getResponseDataAsString();
-def m = requestBody =~/challenger_order.*name=&quot;(challenger.*?)&quot;/
-def orders = []
-(0..&lt;m.count).each{
-	orders.add(m[it][1])}
-for(int i = 0;i&lt;m.count;i++) {
-        vars.put(&quot;order&quot;+i,orders[i])
-      }</stringProp>
-              </JSR223PreProcessor>
               <hashTree/>
               <ResultCollector guiclass="AssertionVisualizer" testclass="ResultCollector" testname="Assertion Results" enabled="true">
                 <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -966,38 +1016,8 @@ for(int i = 0;i&lt;m.count;i++) {
                 <stringProp name="filename"></stringProp>
               </ResultCollector>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="code check" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.custom_message"></stringProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">16</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="not error" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="-1320196033">Looks like you didn&apos;t complete the steps correctly. At least you have a nice error page. Please try again.</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.custom_message"></stringProp>
-                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">6</intProp>
-              </ResponseAssertion>
-              <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="is number of step present" enabled="true">
-                <collectionProp name="Asserion.test_strings">
-                  <stringProp name="-1808501759">Step 5</stringProp>
-                </collectionProp>
-                <stringProp name="Assertion.custom_message"></stringProp>
-                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-                <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">2</intProp>
-              </ResponseAssertion>
-              <hashTree/>
             </hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="get one time token" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_Code" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
               </elementProp>
@@ -1007,13 +1027,13 @@ for(int i = 0;i&lt;m.count;i++) {
               <stringProp name="HTTPSampler.contentEncoding"></stringProp>
               <stringProp name="HTTPSampler.path">/code</stringProp>
               <stringProp name="HTTPSampler.method">GET</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
               <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
               <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
               <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout">10000</stringProp>
             </HTTPSamplerProxy>
             <hashTree>
               <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
@@ -1045,7 +1065,7 @@ for(int i = 0;i&lt;m.count;i++) {
                 </collectionProp>
               </HeaderManager>
               <hashTree/>
-              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="code" enabled="true">
                 <stringProp name="JSONPostProcessor.referenceNames">tokkenOnPage</stringProp>
                 <stringProp name="JSONPostProcessor.jsonPathExprs">$.code</stringProp>
                 <stringProp name="JSONPostProcessor.match_numbers"></stringProp>
@@ -1099,13 +1119,73 @@ for(int i = 0;i&lt;m.count;i++) {
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_Step_Five" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">challengers.flood.io</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/step/5</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="check_number_of_step" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-1808501759">Step 5</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">2</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="check_not_error_page" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-1320196033">Looks like you didn&apos;t complete the steps correctly. At least you have a nice error page. Please try again.</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">6</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <HtmlExtractor guiclass="HtmlExtractorGui" testclass="HtmlExtractor" testname="step id" enabled="true">
+                <stringProp name="HtmlExtractor.refname">step_id</stringProp>
+                <stringProp name="HtmlExtractor.expr">#challenger_step_id</stringProp>
+                <stringProp name="HtmlExtractor.attribute">value</stringProp>
+                <stringProp name="HtmlExtractor.default"></stringProp>
+                <boolProp name="HtmlExtractor.default_empty_value">false</boolProp>
+                <stringProp name="HtmlExtractor.match_number"></stringProp>
+                <stringProp name="HtmlExtractor.extractor_impl"></stringProp>
+              </HtmlExtractor>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="check_status_code" enabled="true">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="49586">200</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.custom_message"></stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">16</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+            </hashTree>
           </hashTree>
-          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="enter one time trans" enabled="true">
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Step_Five_Transaction" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
             <boolProp name="TransactionController.parent">false</boolProp>
           </TransactionController>
           <hashTree>
-            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="enter one time token" enabled="true">
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Step_Five_Post" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments">
                   <elementProp name="utf8" elementType="HTTPArgument">
@@ -1158,13 +1238,13 @@ for(int i = 0;i&lt;m.count;i++) {
               <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
               <stringProp name="HTTPSampler.path">/start</stringProp>
               <stringProp name="HTTPSampler.method">POST</stringProp>
-              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
               <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
               <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
               <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
               <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
               <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout">2000</stringProp>
               <stringProp name="TestPlan.comments">Detected the start of a redirect chain</stringProp>
             </HTTPSamplerProxy>
             <hashTree>
@@ -1238,17 +1318,37 @@ for(int i = 0;i&lt;m.count;i++) {
                 <stringProp name="filename"></stringProp>
               </ResultCollector>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="code check" enabled="true">
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_Done" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain">challengers.flood.io</stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.protocol"></stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">/done</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="check_done_page" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="49586">200</stringProp>
+                  <stringProp name="-745379686">You&apos;re Done!</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.custom_message"></stringProp>
-                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">16</intProp>
+                <intProp name="Assertion.test_type">2</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="not error" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="check_not_error_page" enabled="true">
                 <collectionProp name="Asserion.test_strings">
                   <stringProp name="-1320196033">Looks like you didn&apos;t complete the steps correctly. At least you have a nice error page. Please try again.</stringProp>
                 </collectionProp>
@@ -1258,14 +1358,14 @@ for(int i = 0;i&lt;m.count;i++) {
                 <intProp name="Assertion.test_type">6</intProp>
               </ResponseAssertion>
               <hashTree/>
-              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="is done" enabled="true">
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="check_status_code" enabled="true">
                 <collectionProp name="Asserion.test_strings">
-                  <stringProp name="-745379686">You&apos;re Done!</stringProp>
+                  <stringProp name="49586">200</stringProp>
                 </collectionProp>
                 <stringProp name="Assertion.custom_message"></stringProp>
-                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
                 <boolProp name="Assertion.assume_success">false</boolProp>
-                <intProp name="Assertion.test_type">2</intProp>
+                <intProp name="Assertion.test_type">16</intProp>
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
