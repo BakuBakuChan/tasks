@@ -18,9 +18,6 @@ class MySimulation extends Simulation {
   val t_numberOUsers = Integer.getInteger("numberOUsers", 10).toInt
   val t_durationForScenario = Integer.getInteger("durationForScenario", 60).toInt
   val t_durationOfAllTest = Integer.getInteger("durationOfAllTest", 60).toInt
-//  val t_numberOUsers = 1
-//  val t_durationForScenario = 5000
-//  val t_durationOfAllTest = 3000
 
   /** **********************************************************************************/
 
@@ -32,7 +29,7 @@ class MySimulation extends Simulation {
   val httpProtocol = http
     .baseUrl("https://challengers.flood.io")
     .inferHtmlResources()
-    .inferHtmlResources(BlackList(""".*\.js""", """css?family=Lobster|Lobster+Two""",""".*\.css""", """.*\.gif""", """.*\.jpeg""", """.*\.jpg""", """.*\.ico""", """.*\.woff""", """.*\.woff2""", """.*\.(t|o)tf""", """.*\.png""", """.*detectportal\.firefox\.com.*"""), WhiteList())
+    .inferHtmlResources(BlackList(""".*\.js""", """.*css.*""",""".*\.css""", """.*\.gif""", """.*\.jpeg""", """.*\.jpg""", """.*\.ico""", """.*\.woff""", """.*\.woff2""", """.*\.(t|o)tf""", """.*\.png""", """.*detectportal\.firefox\.com.*"""), WhiteList())
     .acceptHeader("text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
     .acceptEncodingHeader("gzip, deflate")
     .acceptLanguageHeader("en-US,en;q=0.5")

@@ -68,7 +68,6 @@ object Steps {
       .post("/start")
       .headers(defaltHeaders)
       .formParamMap(paramsInEveryStep)
-      //      .formParamMap(paramMapForFourStep)
       .formParam("${challengerOrdersList1}", "${valuesList1}")
       .formParam("${challengerOrdersList2}", "${valuesList1}")
       .formParam("${challengerOrdersList3}", "${valuesList1}")
@@ -134,7 +133,7 @@ object Steps {
     .check(status is (302)))
 
   var PostStepFive = exec(requestPostStepFive
-    .check(status is (302)))
+    .check(status is(302)))
 
   /** **********************************************************************************/
 
