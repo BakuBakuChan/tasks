@@ -133,7 +133,8 @@ object Steps {
     .check(status is (302)))
 
   var PostStepFive = exec(requestPostStepFive
-    .check(status is(302)))
+    .check(status not(422))
+    .check(status not(404)))
 
   /** **********************************************************************************/
 
@@ -193,7 +194,7 @@ object Steps {
   val stepFive = exec(
     requestGetDone
 
-      .check(status is (200))
+      .check(status not(404),status not(422))
       .check(currentLocation.is("https://challengers.flood.io/done")))
 
 }
