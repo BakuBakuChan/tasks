@@ -39,18 +39,7 @@
         <groupId>io.gatling</groupId>
         <artifactId>gatling-maven-plugin</artifactId>
         <version>${gatling-maven-plugin.version}</version>
-        <configuration>
-          <simulationClass>testTaskPerformance.MySimulation</simulationClass>
-          <jvmArgs>
-            <jvmArg>-Denv=stable</jvmArg>
-            <jvmArg>-Dusers=${numberOUsers}</jvmArg>
-            <jvmArg>-DscenarioDuration=${durationForScenario}</jvmArg>
-            <jvmArg>-Dduration=${durationOfAllTest}</jvmArg>
-            <jvmArg>-Xms2g</jvmArg>
-            <jvmArg>-Xmx5g</jvmArg>
-          </jvmArgs>
-          <propagateSystemProperties>true</propagateSystemProperties>
-        </configuration>
+ 
       </plugin>
     </plugins>
   </build>
