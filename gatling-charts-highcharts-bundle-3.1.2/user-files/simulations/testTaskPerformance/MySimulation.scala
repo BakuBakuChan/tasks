@@ -15,9 +15,9 @@ class MySimulation extends Simulation {
   /** **********************************************************************************/
 
   /*SECCION AND SCENARIO VARIABLES*/
-  val t_numberOUsers = Integer.getInteger("numberOUsers", 10).toInt
-  val t_durationForScenario = Integer.getInteger("durationForScenario", 60).toInt
-  val t_durationOfAllTest = Integer.getInteger("durationOfAllTest", 60).toInt
+  val t_numberOUsers = Integer.getInteger("users", 1).toInt
+  val t_durationForScenario = Integer.getInteger("scenarioduration", 60).toInt
+  val t_durationOfAllTest = Integer.getInteger("duration", 1).toInt
 //  val t_numberOUsers = 1
 //  val t_durationForScenario = 60
 //  val t_durationOfAllTest = 1
