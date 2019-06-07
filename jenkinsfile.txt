@@ -12,4 +12,7 @@ node{
    stage("Make report archive"){
       gatlingArchive()
     }
+   stage("Clean work spase"){
+      deleteDir()
+    }
 }
