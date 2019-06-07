@@ -14,9 +14,6 @@ string(defaultValue: '1', description: '', name: 'DURATION', trim: false)])])
       set JAVA_OPTS="-Dusers=%USERS%" "-Dscenarioduration=%SCENARIODURATION%" "-Dduration=%DURATION%"
       gatling.bat -s testTaskPerformance.MySimulation'''
     }
-   stage("Make report archive"){
-      gatlingArchive()
-    }
    stage("Clean work spase"){
       deleteDir()
     }
