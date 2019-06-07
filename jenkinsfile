@@ -14,6 +14,13 @@ string(defaultValue: '1', description: '', name: 'DURATION', trim: false)])])
       set JAVA_OPTS="-Dusers=%USERS%" "-Dscenarioduration=%SCENARIODURATION%" "-Dduration=%DURATION%"
       gatling.bat -s testTaskPerformance.MySimulation'''
     }
+    stage("Report"){
+    publishHTML(
+    [allowMissing: false, alwaysLinkToLastBuild: false, 
+    keepAll: false, reportDir: 
+    'gatling-charts-highcharts-bundle-3.1.2\\results\\mysimulation-20190607121624901\\index.html', 
+    reportFiles: 'index.html', reportName: 'Gatling Report', reportTitles: ''])
+    }
    stage("Clean work spase"){
       deleteDir()
     }
