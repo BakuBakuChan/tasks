@@ -1,6 +1,6 @@
 node{
    stage("git pull"){
-      git branch: '*/JMeter_task', url: 'https://github.com/BakuBakuChan/tasks'
+      git branch: 'JMeter_task', url: 'https://github.com/BakuBakuChan/tasks'
    }
    stage("Run gatling project"){
      bat label: '', script: '''dir
