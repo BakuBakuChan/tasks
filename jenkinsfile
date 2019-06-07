@@ -1,4 +1,11 @@
 node{
+
+properties(
+[parameters(
+[string(defaultValue: '1', description: '', name: 'USERS', trim: false), 
+string(defaultValue: '60', description: '',name: 'SCENARIODURATION', trim: false),
+string(defaultValue: '1', description: '', name: 'DURATION', trim: false)])])
+
  stage("git pull"){
       git branch: 'Performance_task', url: 'https://github.com/BakuBakuChan/tasks'
    }
