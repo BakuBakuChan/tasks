@@ -183,6 +183,11 @@
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Medium_pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">200.0</stringProp>
+              <stringProp name="RandomTimer.range">2000.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Click_On_Start_Button_Transaction" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
@@ -316,6 +321,11 @@
               </ResultCollector>
               <hashTree/>
             </hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Medium_pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">200.0</stringProp>
+              <stringProp name="RandomTimer.range">2000.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_Step_Two" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
@@ -366,6 +376,11 @@
               </HtmlExtractor>
               <hashTree/>
             </hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Little_pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">100.0</stringProp>
+              <stringProp name="RandomTimer.range">1000.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Step_Two_Transaction" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
@@ -506,6 +521,11 @@
               </ResultCollector>
               <hashTree/>
             </hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Medium_pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">200.0</stringProp>
+              <stringProp name="RandomTimer.range">2000.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_Step_Three" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
@@ -582,6 +602,11 @@ def challenger_order_selected = (requestBody =~/type=&quot;radio&quot;.*value=&q
 vars.put(&quot;radio&quot;,challenger_order_selected)
 </stringProp>
             </JSR223PostProcessor>
+            <hashTree/>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Big_pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">300.0</stringProp>
+              <stringProp name="RandomTimer.range">3000.0</stringProp>
+            </UniformRandomTimer>
             <hashTree/>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Step_Three_Transaction" enabled="true">
@@ -730,6 +755,11 @@ vars.put(&quot;radio&quot;,challenger_order_selected)
               </ResultCollector>
               <hashTree/>
             </hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Little_pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">100.0</stringProp>
+              <stringProp name="RandomTimer.range">1000.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_Step_Foure" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
@@ -799,6 +829,11 @@ vars.put(&quot;radio&quot;,challenger_order_selected)
               </HtmlExtractor>
               <hashTree/>
             </hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Medium_pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">200.0</stringProp>
+              <stringProp name="RandomTimer.range">2000.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Step_Four_Transaction" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
@@ -1017,6 +1052,11 @@ for(int i = 0;i&lt;m.count;i++) {
               </ResultCollector>
               <hashTree/>
             </hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Medium_pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">200.0</stringProp>
+              <stringProp name="RandomTimer.range">2000.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_Code" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
@@ -1119,6 +1159,11 @@ for(int i = 0;i&lt;m.count;i++) {
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Little_pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">100.0</stringProp>
+              <stringProp name="RandomTimer.range">1000.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_Step_Five" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
@@ -1179,6 +1224,11 @@ for(int i = 0;i&lt;m.count;i++) {
               </ResponseAssertion>
               <hashTree/>
             </hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Little_pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">100.0</stringProp>
+              <stringProp name="RandomTimer.range">1000.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
           </hashTree>
           <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Step_Five_Transaction" enabled="true">
             <boolProp name="TransactionController.includeTimers">false</boolProp>
@@ -1319,6 +1369,11 @@ for(int i = 0;i&lt;m.count;i++) {
               </ResultCollector>
               <hashTree/>
             </hashTree>
+            <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Medium_pause" enabled="true">
+              <stringProp name="ConstantTimer.delay">200.0</stringProp>
+              <stringProp name="RandomTimer.range">2000.0</stringProp>
+            </UniformRandomTimer>
+            <hashTree/>
             <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get_Done" enabled="true">
               <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
                 <collectionProp name="Arguments.arguments"/>
