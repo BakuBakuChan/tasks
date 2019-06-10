@@ -15,6 +15,6 @@ node{
     jmeter.bat -Jjmeter.save.saveservice.output_format=xml -n -t ..\\..\\newOne.jmx -l Reports\\test.jtl -Jusers=%USERS% -JrumpUp=%RAMP_UP% -Jduration=%DURATION%'''
     }
    stage("Report"){
-      bat label: '', script: 'jmeter.bat  -g Reports\\test.jtl -o report\\HTMLReport'
+      bat label: '', script: 'jmeter -g Reports\\test.jtl -o report\\HTMLReport'
    }
 }
