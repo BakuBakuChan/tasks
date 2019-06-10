@@ -14,7 +14,4 @@ node{
     cd apache-jmeter-5.1.1\\bin
     jmeter.bat -Jjmeter.save.saveservice.output_format=xml -n -t ..\\..\\newOne.jmx -l Reports\\test.jtl -Jusers=%USERS% -JrumpUp=%RAMP_UP% -Jduration=%DURATION%'''
     }
-   stage("Report"){
-      perfReport filterRegex: '', sourceDataFiles: 'apache-jmeter-5.1.1\\bin\\Reports\\test.jtl'
-   }
 }
