@@ -16,14 +16,8 @@ class MySimulation extends Simulation {
 
   /*SECCION AND SCENARIO VARIABLES*/
   val t_numberOUsers = System.getProperty("users", "1").toInt
-  val t_durationForScenario = System.getProperty("scenarioduration", "60").toInt
-  val t_durationOfAllTest = System.getProperty("duration", "1").toInt
- //val t_numberOUsers = Integer.getInteger("users", 1).toInt
- //val t_durationForScenario = Integer.getInteger("scenarioduration", 60).toInt
- //val t_durationOfAllTest = Integer.getInteger("duration", 1).toInt
-//  val t_numberOUsers = 1
-//  val t_durationForScenario = 60
-//  val t_durationOfAllTest = 1
+  val t_duration = System.getProperty("duration", "60").toInt
+  val t_rampUp = System.getProperty("rampUp", "1").toInt
 
   /** **********************************************************************************/
 
@@ -43,7 +37,7 @@ class MySimulation extends Simulation {
     .disableFollowRedirect
 
   val myScenario = scenario("MyTestSimulation")
-    .during(t_durationForScenario) {
+    .during(t_duration) {
       exec(Steps.startTest).pause(lowerPause)
 
         .exec(Steps.PostStepOne).pause(lowerPause, midlePause)
@@ -67,6 +61,6 @@ class MySimulation extends Simulation {
         .exec(Steps.stepFive).pause(lowerPause, midlePause)
     }
 
-  setUp(myScenario.inject(rampUsers(t_numberOUsers) during (t_durationOfAllTest minutes)))
+  setUp(myScenario.inject(rampUsers(t_numberOUsers) during (t_rampUp minutes)))
     .protocols(httpProtocol)
 }
