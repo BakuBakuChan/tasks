@@ -37,7 +37,7 @@ class MySimulation extends Simulation {
     .disableFollowRedirect
 
   val myScenario = scenario("MyTestSimulation")
-    .during(t_duration) {
+    .during(t_duration seconds) {
       exec(Steps.startTest).pause(lowerPause)
 
         .exec(Steps.PostStepOne).pause(lowerPause, midlePause)
@@ -61,6 +61,6 @@ class MySimulation extends Simulation {
         .exec(Steps.stepFive).pause(lowerPause, midlePause)
     }
 
-  setUp(myScenario.inject(rampUsers(t_numberOUsers) during (t_rampUp minutes)))
+  setUp(myScenario.inject(rampUsers(t_numberOUsers) during (t_rampUp seconds)))
     .protocols(httpProtocol)
 }
