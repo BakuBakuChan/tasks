@@ -16,6 +16,6 @@ node{
     }
    stage("Report"){
       bat label: '', script: '''cd apache-jmeter-5.1.1\\\\bin
-      jmeter.bat  -g Reports\\test.jtl -o Reports\reports'''
+      jmeter.bat  -g Reports\\test.jtl -o Reports\\reports'''
    }
 }
