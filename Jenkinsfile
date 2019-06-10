@@ -14,4 +14,8 @@ node{
     cd apache-jmeter-5.1.1\\bin
     jmeter.bat -n -t ..\\..\\newOne.jmx -l Reports\\test.cvl -e -o Reports\\reports -Jusers=%USERS% -JrumpUp=%RAMP_UP% -Jduration=%DURATION%'''
     }
+   stage("Report"){
+      publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir:
+                   'apache-jmeter-5.1.1\\bin\\Reports\\reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+   }
 }
