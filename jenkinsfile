@@ -9,13 +9,19 @@ string(defaultValue: '1', description: '', name: 'RAMP_UP', trim: false)])])
  stage("git pull"){
       git branch: 'Performance_task', url: 'https://github.com/BakuBakuChan/tasks'
    }
-   stage("Run gatling project"){
+ stage("Run gatling project"){
       bat label: '', script: '''cd gatling-charts-highcharts-bundle-3.1.2\\bin
       set JAVA_OPTS="-Dusers=%USERS%" "-Dduration=%DURATION%" "-DrampUp=%RAMP_UP%"
       gatling.bat -s testTaskPerformance.MySimulation'''
     }
-   stage("Report"){
-publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 
-'gatling-charts-highcharts-bundle-3.1.2\\results\\my*', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+ stage("Report"){
+   bat label: '', script: '''cd gatling-charts-highcharts-bundle-3.1.2\\results
+      mkdir result
+      cd my*
+      move * ..\\result
+      move style ..\\result
+      move js ..\\result'''
+      publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 
+     'gatling-charts-highcharts-bundle-3.1.2\\results\\result', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
     }
 }
