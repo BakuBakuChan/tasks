@@ -3,7 +3,7 @@ node{
    properties(
       [parameters(
       [string(defaultValue: '1', description: '', name: 'USERS', trim: false),
-       string(defaultValue: '60', description: '', name: 'RAMP_UP', trim: false),
+       string(defaultValue: '1', description: '', name: 'RAMP_UP', trim: false),
        string(defaultValue: '60', description: '', name: 'DURATION', trim: false)])])
    
    stage("git pull"){
