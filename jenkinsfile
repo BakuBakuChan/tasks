@@ -24,4 +24,7 @@ string(defaultValue: '1', description: '', name: 'RAMP_UP', trim: false)])])
       publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 
      'gatling-charts-highcharts-bundle-3.1.2\\results\\result', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
     }
+  stage("Clean work spase"){
+      deleteDir()
+    }
 }
