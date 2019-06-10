@@ -12,10 +12,10 @@ node{
    stage("Run gatling project"){
      bat label: '', script: '''dir
     cd apache-jmeter-5.1.1\\bin
-    jmeter.bat -n -t ..\\..\\newOne.jmx -l Reports\\test.csv -Jusers=%USERS% -JrumpUp=%RAMP_UP% -Jduration=%DURATION%'''
+    jmeter.bat -n -t ..\\..\\newOne.jmx -l Reports\\test.jtl -Jusers=%USERS% -JrumpUp=%RAMP_UP% -Jduration=%DURATION%'''
     }
    stage("Report"){
       bat label: '', script: '''cd apache-jmeter-5.1.1\\\\bin
-      jmeter.bat  -g Reports\\test.csv -o Reports\\reports'''
+      jmeter.bat  -g Reports\\test.jtl -o Reports\\reports'''
    }
 }
