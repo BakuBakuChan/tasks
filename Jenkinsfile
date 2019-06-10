@@ -6,10 +6,10 @@ node{
        string(defaultValue: '1', description: '', name: 'RAMP_UP', trim: false),
        string(defaultValue: '60', description: '', name: 'DURATION', trim: false)])])
    
-   stage("git pull"){
+   stage("Git pull"){
       git branch: 'JMeter_task', url: 'https://github.com/BakuBakuChan/tasks'
    }
-   stage("Run gatling project"){
+   stage("Run JMeter project"){
      bat label: '', script: '''dir
     cd apache-jmeter-5.1.1\\bin
     mkdir Reports\\reports
@@ -18,5 +18,8 @@ node{
    stage("Report"){
     publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 
                  '\\apache-jmeter-5.1.1\\bin\\Reports\\reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+   }
+   stage("Clean work spase"){
+     deleteDir()
    }
 }
