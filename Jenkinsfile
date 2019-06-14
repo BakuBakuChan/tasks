@@ -12,14 +12,12 @@ node{
    stage("Run JMeter project"){
      bat label: '', script: '''dir
     cd apache-jmeter-5.1.1\\bin
-    mkdir Reports\\reports
-    jmeter.bat -n -t ..\\..\\newOne.jmx -l Reports\\test.cvl -e -o Reports\\reports -Jusers=%USERS% -JrumpUp=%RAMP_UP% -Jduration=%DURATION%'''
+    mkdir Reports
+    mkdir resports
+    jmeter.bat -n -t ..\\..\\newOne.jmx -l Reports\\test.cvl -e -o resports -Jusers=%USERS% -JrumpUp=%RAMP_UP% -Jduration=%DURATION%'''
     }
    stage("Report"){
     publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 
                  '\\apache-jmeter-5.1.1\\bin\\Reports\\reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
-   }
-   stage("Clean work spase"){
-     deleteDir()
    }
 }
