@@ -57,8 +57,14 @@ class MySimulation extends Simulation {
         .exec(Steps.PostStepFour).pause(lowerPause, midlePause)
         .exec(Steps.stepFour).pause(lowerPause, midlePause)
         .exec(Steps.getOneTimeTokenForStepFive).pause(lowerPause, higherPause)
-        .exec(Steps.PostStepFive).pause(lowerPause, midlePause)
-        .exec(Steps.stepFive).pause(lowerPause, midlePause)
+		.randomSwitch(70d -> exec(Steps.PostStepFive).pause(lowerPause, midlePause)
+        .exec(Steps.stepFive).pause(lowerPause, midlePause),
+		 30d -> exec(http("Step_Five")
+               .post("/start")
+               .formParam("challenger[step_number]", "5")
+               .formParam("challenger[one_time_token]", "0")
+			   .check(status not(422))
+               .check(status not(404))))
     }
 
   setUp(myScenario.inject(rampUsers(t_numberOUsers) during (t_rampUp seconds)))
