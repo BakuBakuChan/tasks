@@ -11,8 +11,6 @@ node{
    }
    stage("Run JMeter project"){
       sh label: '', script: '''
-      cd /var/lib/jenkins/workspase/jmeter/tasks/
-      mkdir Reports
       export timestamp=$(date +%Y%m%d_%H%M%S) && \\
       export volume_path=/var/lib/jenkins/workspase/jmeter/tasks && \\
       export jmeter_path=/mnt/jmeter && \\
