@@ -13,7 +13,7 @@ node{
       sh label: '', script: '''
       export timestamp=$(date +%Y%m%d_%H%M%S) && \\
       export volume_path=/var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/JMeter && \\
-      export jmeter_path=/mnt/jmeter && \\
+      export jmeter_path=/mnt/jmeter
       docker run \\
       --rm \\
       --name nameOne \\
@@ -22,13 +22,13 @@ node{
       -n "-Jusers=%USERS% -JrumpUp=%RAMP_UP% -Jduration=%DURATION%" \\
       -t ${jmeter_path}/newOne.jmx \\
       -l ${jmeter_path}/result_${timestamp}.jtl \\
-      -e -o ${jmeter_path}/Reports \\
+      -e -o ${jmeter_path}/Reports_${timestamp} \\
       -j ${jmeter_path}/jmeter_${timestamp}.log'''  
     }
     
      stage("Report"){
     publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 
-                 '${jmeter_path}/Reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+                 '${jmeter_path}/Reports_${timestamp}', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
    }
    stage("Clean work spase"){
       deleteDir()
