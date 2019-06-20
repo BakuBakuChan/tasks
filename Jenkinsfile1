@@ -12,7 +12,7 @@ node{
    stage("Run JMeter project"){
       sh label: '', script: '''
       ls
-      cd tmp
+      cd ~/tmp
       ls
       mkdir Reports
       ls
