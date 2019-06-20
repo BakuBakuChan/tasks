@@ -10,7 +10,8 @@ node{
       git branch: 'JMeter_task', url: 'https://github.com/BakuBakuChan/tasks'
    }
    stage("Run JMeter project"){
-      sh label: '', script: '''export timestamp=$(date +%Y%m%d_%H%M%S) && \\
+      sh label: '', script: '''
+      export timestamp=$(date +%Y%m%d_%H%M%S) && \\
       export volume_path=/var/lib/jenkins/workspase/jmeter/tasks && \\
       export jmeter_path=/mnt/jmeter && \\
       docker run \\
@@ -21,14 +22,7 @@ node{
       -n "-Jusers=%USERS% -JrumpUp=%RAMP_UP% -Jduration=%DURATION%" \\
       -t ${jmeter_path}/newOne.jmx \\
       -l ${jmeter_path}/tmp/result_${timestamp}.jtl \\
-	  -e -o Reports/resports \\
+      -e -o /var/lib/jenkins/workspase/jmeter/tasks/Reports \\
       -j ${jmeter_path}/tmp/jmeter_${timestamp}.log'''  
     }
-   stage("Report"){
-    publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 
-                 'var/lib/jenkins/workspase/jmeter/tasks/Reports/resports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
-   }
-   stage("Clean work spase"){
-      deleteDir()
-   }
 }
