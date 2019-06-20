@@ -31,8 +31,8 @@ node{
      cd /tmp
      mkdir report
      cd /var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/newItem/Repo*
-     cp *.* ../report
-     cp content ../report'''
+     cp *.* /tmp/report
+     cp content /tmp/report'''
     publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 
                  '/tmp/report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
    }
