@@ -12,6 +12,8 @@ node{
    }
    stage("Run JMeter project"){
       sh label: '', script: '''
+      cd /tmp
+      mkdir Reports
       export timestamp=$(date +%Y%m%d_%H%M%S) && \\
       export volume_path=/var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/JMeter && \\
       export jmeter_path=/mnt/jmeter && \\
@@ -33,5 +35,8 @@ node{
    }
    stage("Clean work spase"){
       deleteDir()
+       sh label: '', script: '''
+       cd /tmp
+       rm -rf Reports'''
    }
 }
