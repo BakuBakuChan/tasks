@@ -30,7 +30,7 @@ node{
      sh label: '', script: ''' 
      cd /tmp
      mkdir report
-     cd /var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/newItem$/Repo*
+     cd /var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/newItem/Repo*
      cp *.* ../report
      cp content ../report'''
     publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 
