@@ -31,7 +31,7 @@ node{
      mkdir report
      cd Repo*
      mv *.* ../report
-     mv content ../report""
+     mv content ../report'''
     publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 
                  '/var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/newItem/report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
    }
