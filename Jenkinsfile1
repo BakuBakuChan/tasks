@@ -7,12 +7,13 @@ node{
        string(defaultValue: '60', description: 'in seconds', name: 'DURATION', trim: false)])])
    
    stage("Git pull"){
+      sh label: '', script: '''dir'''
       git branch: 'JMeter_task', url: 'https://github.com/BakuBakuChan/tasks'
    }
    stage("Run JMeter project"){
       sh label: '', script: '''
       export timestamp=$(date +%Y%m%d_%H%M%S) && \\
-      export volume_path=/var/lib/jenkins/workspase/jmeter/tasks && \\
+      export volume_path=/var/lib/jenkins/workspase/jmeter/tasks/ && \\
       export jmeter_path=/mnt/jmeter && \\
       docker run \\
       --rm \\
@@ -21,8 +22,8 @@ node{
       vmarrazzo/jmeter \\
       -n "-Jusers=%USERS% -JrumpUp=%RAMP_UP% -Jduration=%DURATION%" \\
       -t ${jmeter_path}/newOne.jmx \\
-      -l ${jmeter_path}/tmp/result_${timestamp}.jtl \\
+      -l ${jmeter_path}/result_${timestamp}.jtl \\
       -e -o /tmp/Reports \\
-      -j ${jmeter_path}/tmp/jmeter_${timestamp}.log'''  
+      -j ${jmeter_path}/jmeter_${timestamp}.log'''  
     }
 }
