@@ -35,8 +35,5 @@ node{
    }
    stage("Clean work spase"){
       deleteDir()
-       sh label: '', script: '''
-       cd /tmp
-       rm -rf Reports'''
    }
 }
