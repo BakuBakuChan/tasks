@@ -33,7 +33,7 @@ node{
      cd /var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/newItem/Repo*
      cp index.html /tmp/report
      cp -r sbadmin2-1.0.7 /tmp/report
-     cp content /tmp/report'''
+     cp -r content /tmp/report'''
     publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 
                  '/tmp/report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
    }
