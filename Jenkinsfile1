@@ -22,12 +22,17 @@ node{
       -n "-Jusers=%USERS% -JrumpUp=%RAMP_UP% -Jduration=%DURATION%" \\
       -t ${jmeter_path}/newOne.jmx \\
       -l ${jmeter_path}/result_${timestamp}.jtl \\
-      -e -o ${jmeter_path}/Reports \\
+      -e -o ${jmeter_path}/Reports_${timestamp} \\
       -j ${jmeter_path}/jmeter_${timestamp}.log'''  
     }
     
      stage("Report"){
+     sh label: '', script: ''' 
+     mkdir report
+     cd Repo*
+     mv *.* ../report
+     mv content ../report""
     publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 
-                 '/var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/newItem/Reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+                 '/var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/newItem/report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
    }
 }
