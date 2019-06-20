@@ -7,7 +7,6 @@ node{
        string(defaultValue: '60', description: 'in seconds', name: 'DURATION', trim: false)])])
    
    stage("Git pull"){
-      sh label: '', script: '''dir'''
       git branch: 'JMeter_task', url: 'https://github.com/BakuBakuChan/tasks'
    }
    stage("Run JMeter project"){
