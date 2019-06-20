@@ -30,7 +30,4 @@ node{
     publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 
                  '${jmeter_path}/Reports_${timestamp}', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
    }
-   stage("Clean work spase"){
-      deleteDir()
-   }
 }
