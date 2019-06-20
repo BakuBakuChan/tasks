@@ -28,11 +28,12 @@ node{
     
      stage("Report"){
      sh label: '', script: ''' 
+     cd /tmp
      mkdir report
-     cd Repo*
-     mv *.* ../report
-     mv content ../report'''
+     cd /var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/newItem$/Repo*
+     cp *.* ../report
+     cp content ../report'''
     publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 
-                 '/var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/newItem/report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+                 '/tmp/report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
    }
 }
