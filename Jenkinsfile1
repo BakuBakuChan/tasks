@@ -10,9 +10,10 @@ node{
       git branch: 'JMeter_task', url: 'https://github.com/BakuBakuChan/tasks'
    }
    stage("Run JMeter project"){
-      sh label: '', script: '''export timestamp=$(date +%Y%m%d_%H%M%S) && \\
-      export volume_path=/var/lib/jenkins/workspase/jmeter/tasks && \\
-      export jmeter_path=/mnt/jmeter && \\
+      sh label: '', script: '''
+      export timestamp=$(date +%Y%m%d_%H%M%S) && \\
+      export volume_path=/var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/newItem && \\
+      export jmeter_path=/mnt/jmeter
       docker run \\
       --rm \\
       --name nameOne \\
@@ -24,11 +25,16 @@ node{
 	  -e -o Reports/resports \\
       -j ${jmeter_path}/tmp/jmeter_${timestamp}.log'''  
     }
-   stage("Report"){
+    
+     stage("Report"){
+     sh label: '', script: ''' 
+     cd /tmp
+     mkdir report
+     cd /var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/newItem/Repo*
+     cp index.html /tmp/report
+     cp -r sbadmin2-1.0.7 /tmp/report
+     cp -r content /tmp/report'''
     publishHTML([allowMissing: true, alwaysLinkToLastBuild: true, keepAll: true, reportDir: 
-                 'var/lib/jenkins/workspase/jmeter/tasks/Reports/resports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
-   }
-   stage("Clean work spase"){
-      deleteDir()
+                 '/tmp/report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
    }
 }
