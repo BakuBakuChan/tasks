@@ -9,13 +9,13 @@ influxdb:
     # sudo mkdir -p /srv/docker/influxdb/data
     - /srv/docker/influxdb/data:/var/lib/influxdb
 
-JMeter:
+jmeter:
   image: vmarrazzo/jmeter
   container_name: jmeter
   links:
     - influxdb
   volumes: 
-    -/tmp/tasks:/mnt/jmeter
+    - /tmp/tasks:/srv/docker/jmeter
   environment:
    - JMETER_TEST=newOne.jmx?
    - JMETER_USERS=1 
