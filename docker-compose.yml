@@ -4,6 +4,7 @@ nginx:
   ports:
     - "80:80"
   volumes:
+    #- ./influxdb.conf:/etc/influxdb/influxdb.conf:ro
     - /srv/docker/nginx/sites-enabled:/etc/nginx/sites-enabled
   restart: always
   
@@ -16,7 +17,7 @@ influxdb:
   env_file:
     - 'env.influxdb'
   volumes:
-    - $PWD/influxdb.conf:/etc/influxdb/influxdb.conf:ro 
+   # - ./influxdb.conf:/etc/influxdb/influxdb.conf:ro 
     - /srv/docker/influxdb/data:/tmp/influxdb
     
 grafana:
