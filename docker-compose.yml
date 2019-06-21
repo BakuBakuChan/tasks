@@ -1,3 +1,12 @@
+
+nginx:
+  image: sameersbn/nginx:1.15.8
+  ports:
+    - "80:80"
+  volumes:
+    - /srv/docker/nginx/sites-enabled:/etc/nginx/sites-enabled
+  restart: always
+  
 influxdb:
   image: influxdb:latest
   container_name: influxdb
@@ -7,7 +16,7 @@ influxdb:
   env_file:
     - 'env.influxdb'
   volumes:
-    # sudo mkdir -p /srv/docker/influxdb/data
+    - $PWD/influxdb.conf:/etc/influxdb/influxdb.conf:ro 
     - /srv/docker/influxdb/data:/tmp/influxdb
     
 grafana:
@@ -20,5 +29,4 @@ grafana:
   links:
     - influxdb
   volumes:
-    # sudo mkdir -p /srv/docker/grafana/data; chown 472:472 /srv/docker/grafana/data
     - /srv/docker/grafana/data:/tmp/grafana
