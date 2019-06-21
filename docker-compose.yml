@@ -7,7 +7,7 @@ influxdb:
     - 'env.influxdb'
   volumes:
     # sudo mkdir -p /srv/docker/influxdb/data
-    - /srv/docker/influxdb/data:/var/lib/influxdb
+    - /srv/docker/influxdb/data:/tmp/influxdb
     
 grafana:
   image: grafana/grafana:latest
@@ -20,4 +20,4 @@ grafana:
     - influxdb
   volumes:
     # sudo mkdir -p /srv/docker/grafana/data; chown 472:472 /srv/docker/grafana/data
-    - /srv/docker/grafana/data:/var/lib/grafana
+    - /srv/docker/grafana/data:/tmp/grafana
