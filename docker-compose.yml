@@ -15,7 +15,7 @@ JMeter:
   links:
     - influxdb
   volumes: 
-    -/var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/newItem:/mnt/jmeter
+    -/tmp/tasks:/mnt/jmeter
   environment:
    - JMETER_TEST=newOne.jmx?
    - JMETER_USERS=1 
