@@ -1,0 +1,36 @@
+influxdb:
+  image: influxdb:latest
+  container_name: influxdb
+  ports:
+    - "8086:8086"
+  env_file:
+    - 'env.influxdb'
+  volumes:
+    # sudo mkdir -p /srv/docker/influxdb/data
+    - /srv/docker/influxdb/data:/var/lib/influxdb
+
+JMeter:
+  image: vmarrazzo/jmeter
+  container_name: jmeter
+  links:
+    - influxdb
+  volumes: 
+    -/var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/newItem:/mnt/jmeter
+  environment:
+   - JMETER_TEST=newOne.jmx?
+   - JMETER_USERS=1 
+   - JMETER_RUMPUP=1
+   - JMETER_DURATION=30
+
+grafana:
+  image: grafana/grafana:latest
+  container_name: grafana
+  ports:
+    - "3000:3000"
+  env_file:
+    - 'env.grafana'
+  links:
+    - influxdb
+  volumes:
+    # sudo mkdir -p /srv/docker/grafana/data; chown 472:472 /srv/docker/grafana/data
+    - /srv/docker/grafana/data:/var/lib/grafana
