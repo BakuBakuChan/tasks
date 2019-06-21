@@ -8,20 +8,7 @@ influxdb:
   volumes:
     # sudo mkdir -p /srv/docker/influxdb/data
     - /srv/docker/influxdb/data:/var/lib/influxdb
-
-jmeter:
-  image: vmarrazzo/jmeter
-  container_name: jmeter
-  links:
-    - influxdb
-  volumes: 
-    - /tmp/tasks:/srv/docker/jmeter
-  environment:
-   - JMETER_TEST=newOne.jmx?
-   - JMETER_USERS=1 
-   - JMETER_RUMPUP=1
-   - JMETER_DURATION=30
-
+    
 grafana:
   image: grafana/grafana:latest
   container_name: grafana
