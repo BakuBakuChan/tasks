@@ -51,12 +51,12 @@
           <boolProp name="LoopController.continue_forever">false</boolProp>
           <intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">${__P(users)}</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">${__P(rumpUp)}</stringProp>
+        <stringProp name="ThreadGroup.num_threads">${__P(users,1)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(rumpUp,1)}</stringProp>
         <longProp name="ThreadGroup.start_time">1370726934000</longProp>
         <longProp name="ThreadGroup.end_time">1370726934000</longProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.duration">${__P(duration)}</stringProp>
+        <stringProp name="ThreadGroup.duration">${__P(duration,30)}</stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
@@ -1767,7 +1767,7 @@ for(int i = 0;i&lt;m.count;i++) {
             </elementProp>
             <elementProp name="influxdbUrl" elementType="Argument">
               <stringProp name="Argument.name">influxdbUrl</stringProp>
-              <stringProp name="Argument.value">http://localhost:80/8086/write?db=jmeterdb</stringProp>
+              <stringProp name="Argument.value">http://localhost:8086/write?db=jmeterdb</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="application" elementType="Argument">
