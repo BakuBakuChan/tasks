@@ -17,8 +17,9 @@ influxdb:
   env_file:
     - 'env.influxdb'
   volumes:
-   # - ./influxdb.conf:/etc/influxdb/influxdb.conf:ro 
+    - /tmp/tasks/influxdb.conf:/etc/influxdb/influxdb.conf:ro 
     - /srv/docker/influxdb/data:/tmp/influxdb
+  command: influxdb -config /etc/influxdb/influxdb.conf
     
 grafana:
   image: grafana/grafana:latest
