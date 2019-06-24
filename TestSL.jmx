@@ -1767,7 +1767,7 @@ for(int i = 0;i&lt;m.count;i++) {
             </elementProp>
             <elementProp name="graphiteHost" elementType="Argument">
               <stringProp name="Argument.name">graphiteHost</stringProp>
-              <stringProp name="Argument.value">localhost</stringProp>
+              <stringProp name="Argument.value">compassionate_dijkstra</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="graphitePort" elementType="Argument">
