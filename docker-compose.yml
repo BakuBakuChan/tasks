@@ -31,11 +31,3 @@ grafana:
     - influxdb
   volumes:
     - /srv/docker/grafana/data:/tmp/grafana
-    
-jmeter:
-  image: vmarrazzo/jmeter
-  container_name: jmeter
-  links:
-    - influxdb
-  volumes: 
-    -/tmp/tasks:/mnt/jmeter
