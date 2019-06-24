@@ -1772,7 +1772,7 @@ for(int i = 0;i&lt;m.count;i++) {
             </elementProp>
             <elementProp name="influxDBHost" elementType="Argument">
               <stringProp name="Argument.name">influxDBHost</stringProp>
-              <stringProp name="Argument.value">127.0.0.1/2003</stringProp>
+              <stringProp name="Argument.value">127.0.0.1</stringProp>
               <stringProp name="Argument.metadata">=</stringProp>
             </elementProp>
             <elementProp name="influxDBPort" elementType="Argument">
