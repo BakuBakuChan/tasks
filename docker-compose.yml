@@ -37,5 +37,3 @@ jmeter:
   container_name: jmeter
   links:
     - influxdb
-  volumes: 
-    -/tmp/tasks:/mnt/jmeter
