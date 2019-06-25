@@ -3,7 +3,7 @@ FROM alpine:3.6
 # 2
 LABEL maintainer="Vincenzo Marrazzo <pariamentz@gmail.com>"
 # 3 
-ARG JMETER_VERSION="5.1.1"
+ARG JMETER_VERSION="5.1"
 # 4
 ENV JMETER_HOME /opt/apache-jmeter-${JMETER_VERSION}
 ENV JMETER_BIN  ${JMETER_HOME}/bin
@@ -29,8 +29,6 @@ RUN    apk update \
 COPY JMeter-InfluxDB-Writer-plugin-1.2.jar ${JMETER_PLUGINS_FOLDER}
 #RUN curl -L --silent https://github.com/NovatecConsulting/JMeter-InfluxDB-Writer/releases/tag/v-1.2/JMeter-InfluxDB-Writer-plugin-1.2.jar -o ${JMETER_PLUGINS_FOLDER}/JMeter-InfluxDB-Writer-plugin-1.2.jar
 RUN cd ${JMETER_PLUGINS_FOLDER} && ls -la
-RUN curl -L --silent ${JMETER_PLUGINS_DOWNLOAD_URL}/jmeter-plugins-dummy/0.2/jmeter-plugins-dummy-0.2.jar -o ${JMETER_PLUGINS_FOLDER}/jmeter-plugins-dummy-0.2.jar
-RUN curl -L --silent ${JMETER_PLUGINS_DOWNLOAD_URL}/jmeter-plugins-cmn-jmeter/0.5/jmeter-plugins-cmn-jmeter-0.5.jar -o ${JMETER_PLUGINS_FOLDER}/jmeter-plugins-cmn-jmeter-0.5.jar
 
 
 # https://github.com/NovatecConsulting/JMeter-InfluxDB-Writer/releases/tag/v-1.2
