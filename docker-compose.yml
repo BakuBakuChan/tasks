@@ -1,13 +1,4 @@
-
-nginx:
-  image: nginx:latest
-  ports:
-    - "80:80"
-  volumes:
-    - /tmp/tasks/nginx.conf:/etc/nginx/nginx.conf
-  restart: always
-  
-influxdb:
+ influxdb:
   image: influxdb:latest
   container_name: influxdb
   ports:
