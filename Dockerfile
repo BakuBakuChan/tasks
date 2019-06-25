@@ -1,20 +1,16 @@
 # 1
 FROM alpine:3.6
-
 # 2
-LABEL maintainer=”vincenzo.marrazzo@domain.personal>
-
+LABEL maintainer="Vincenzo Marrazzo <pariamentz@gmail.com>"
 # 3 
-ARG JMETER_VERSION="4.0"
-
+ARG JMETER_VERSION="3.3"
 # 4
 ENV JMETER_HOME /opt/apache-jmeter-${JMETER_VERSION}
 ENV JMETER_BIN  ${JMETER_HOME}/bin
-ENV MIRROR_HOST http://mirrors.ocf.berkeley.edu/apache/jmeter
+ENV MIRROR_HOST https://archive.apache.org/dist/jmeter
 ENV JMETER_DOWNLOAD_URL ${MIRROR_HOST}/binaries/apache-jmeter-${JMETER_VERSION}.tgz
 ENV JMETER_PLUGINS_DOWNLOAD_URL http://repo1.maven.org/maven2/kg/apc
 ENV JMETER_PLUGINS_FOLDER ${JMETER_HOME}/lib/ext/
-
 # 5
 RUN    apk update \
 	&& apk upgrade \
@@ -29,9 +25,6 @@ RUN    apk update \
 	&& mkdir -p /opt  \
 	&& tar -xzf /tmp/dependencies/apache-jmeter-${JMETER_VERSION}.tgz -C /opt  \
 	&& rm -rf /tmp/dependencies
-
-#COPY /tmp/tasks/JMeter-InfluxDB-Writer-plugin-1.2.jar ${JMETER_PLUGINS_FOLDER}
-
 # 6
 RUN curl -L --silent ${JMETER_PLUGINS_DOWNLOAD_URL}/jmeter-plugins-dummy/0.2/jmeter-plugins-dummy-0.2.jar -o ${JMETER_PLUGINS_FOLDER}/jmeter-plugins-dummy-0.2.jar
 RUN curl -L --silent ${JMETER_PLUGINS_DOWNLOAD_URL}/jmeter-plugins-cmn-jmeter/0.5/jmeter-plugins-cmn-jmeter-0.5.jar -o ${JMETER_PLUGINS_FOLDER}/jmeter-plugins-cmn-jmeter-0.5.jar
