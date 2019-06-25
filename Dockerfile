@@ -26,7 +26,8 @@ RUN    apk update \
 	&& tar -xzf /tmp/dependencies/apache-jmeter-${JMETER_VERSION}.tgz -C /opt  \
 	&& rm -rf /tmp/dependencies
 # 6
-COPY /tmp/tasks/JMeter-InfluxDB-Writer-plugin-1.2.jar ${JMETER_PLUGINS_FOLDER}
+RUN git clone https://github.com/BakuBakuChan/tasks.git -b JMeter_task && cd tasks
+COPY JMeter-InfluxDB-Writer-plugin-1.2.jar ${JMETER_PLUGINS_FOLDER}
 RUN cd ${JMETER_PLUGINS_FOLDER} && ls -la
 RUN curl -L --silent ${JMETER_PLUGINS_DOWNLOAD_URL}/jmeter-plugins-dummy/0.2/jmeter-plugins-dummy-0.2.jar -o ${JMETER_PLUGINS_FOLDER}/jmeter-plugins-dummy-0.2.jar
 RUN curl -L --silent ${JMETER_PLUGINS_DOWNLOAD_URL}/jmeter-plugins-cmn-jmeter/0.5/jmeter-plugins-cmn-jmeter-0.5.jar -o ${JMETER_PLUGINS_FOLDER}/jmeter-plugins-cmn-jmeter-0.5.jar
