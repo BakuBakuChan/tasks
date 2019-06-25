@@ -43,5 +43,4 @@ COPY launch.sh /
 WORKDIR ${JMETER_HOME}
 
 #10
-RUN chmod +x launch.sh
 ENTRYPOINT ["/launch.sh"]
