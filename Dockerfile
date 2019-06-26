@@ -26,9 +26,24 @@ RUN    apk update \
 	&& tar -xzf /tmp/dependencies/apache-jmeter-${JMETER_VERSION}.tgz -C /opt  \
 	&& rm -rf /tmp/dependencies
 # 6
-COPY JMeter-InfluxDB-Writer-plugin-1.2.jar ${JMETER_PLUGINS_FOLDER}
+#COPY JMeter-InfluxDB-Writer-plugin-1.2.jar ${JMETER_PLUGINS_FOLDER}
 #RUN curl -L --silent https://github.com/NovatecConsulting/JMeter-InfluxDB-Writer/releases/tag/v-1.2/JMeter-InfluxDB-Writer-plugin-1.2.jar -o ${JMETER_PLUGINS_FOLDER}/JMeter-InfluxDB-Writer-plugin-1.2.jar
-RUN cd ${JMETER_PLUGINS_FOLDER} && ls -la
+#RUN cd ${JMETER_PLUGINS_FOLDER} && ls -la
+RUN curl -L --silent ${JMETER_PLUGINS_DOWNLOAD_URL}/jmeter-plugins-dummy/0.2/jmeter-plugins-dummy-0.2.jar -o ${JMETER_PLUGINS_FOLDER}/jmeter-plugins-dummy-0.2.jar
+RUN curl -L --silent ${JMETER_PLUGINS_DOWNLOAD_URL}/jmeter-plugins-cmn-jmeter/0.5/jmeter-plugins-cmn-jmeter-0.5.jar -o ${JMETER_PLUGINS_FOLDER}/jmeter-plugins-cmn-jmeter-0.5.jar
+
+# 7
+ENV PATH $PATH:$JMETER_BIN
+
+# 8
+COPY launch.sh /
+
+#9
+WORKDIR ${JMETER_HOME}
+
+#10
+ENTRYPOINT ["/launch.sh"]
+
 
 
 # https://github.com/NovatecConsulting/JMeter-InfluxDB-Writer/releases/tag/v-1.2
