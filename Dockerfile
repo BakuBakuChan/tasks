@@ -16,7 +16,7 @@ RUN    apk update \
 	&& apk upgrade \
 	&& apk add ca-certificates \
 	&& update-ca-certificates \
-	&& apk add --no-cache nss
+	&& apk add --no-cache nss \
     && apk add --update openjdk8-jre tzdata curl unzip bash \
     && cp /usr/share/zoneinfo/Europe/Rome /etc/localtime \
     && echo "Europe/Rome" >  /etc/timezone \
