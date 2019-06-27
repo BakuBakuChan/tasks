@@ -25,6 +25,7 @@ node{
       -j ${jmeter_path}/tmp/jmeter_${timestamp}.log
 '''
     }
-	stage("Dell dir"){
-	}
+   stage("Clean work spase"){
+      deleteDir()
+    }
 }
