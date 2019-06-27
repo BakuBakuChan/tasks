@@ -16,8 +16,8 @@ string(defaultValue: '1', description: 'in seconds', name: 'RAMP_UP', trim: fals
      --rm \\
      --name gatlingtest \\
      --link=influxdb \\
-    -v /var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/newItemgatling.conf:/opt/gatling/conf/gatling.conf \\
-    -v /var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/newItem/user-files:/opt/gatling/user-files \\
+    -v /var/lib/jenkins/workspace/JMeter_Gatling_/Gatling/gatling.conf:/opt/gatling/conf/gatling.conf \\
+    -v /var/lib/jenkins/workspace/JMeter_Gatling_/Gatling/user-files:/opt/gatling/user-files \\
     -v /tmp/tasks/gatling/results:/opt/gatling/results \\
 denvazh/gatling \\
 -s testTaskPerformance.MySimulation'''
