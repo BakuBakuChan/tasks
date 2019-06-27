@@ -20,7 +20,7 @@ node{
       --link=influxdb \\
       --volume ${volume_path}:${jmeter_path} \\
         jmeter \\
-      -n "-Jusers=%USERS% -JrumpUp=%RAMP_UP% -Jduration=%DURATION%" \\
+      -n "-Jusers=1 -JrumpUp=1 -Jduration=30" \\
       -t ${jmeter_path}/TestKL.jmx\\
       -l ${jmeter_path}/tmp/result_${timestamp}.jtl \\
       -j ${jmeter_path}/tmp/jmeter_${timestamp}.log'''  
