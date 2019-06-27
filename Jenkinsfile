@@ -14,7 +14,7 @@ node{
       export timestamp=$(date +%Y%m%d_%H%M%S) && \\
       export volume_path=/tmp/tasks && \\
       export jmeter_path=/mnt/jmeter
-      sudo docker run \\
+      docker run \\
       --rm \\
       --name jmetertest \\
       --link=influxdb \\
