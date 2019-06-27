@@ -12,7 +12,7 @@ node{
    stage("Run JMeter project"){
       sh label: '', script: '''
       export timestamp=$(date +%Y%m%d_%H%M%S) && \\
-      export volume_path=/var/lib/jenkins/workspace/JMeter_Gatling_docker_ubuntu/JMeter && \\
+      export volume_path=/tmp/tasks && \\
       export jmeter_path=/mnt/jmeter
       docker run \\
       --rm \\
