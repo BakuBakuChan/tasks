@@ -26,7 +26,4 @@ node{
 	   -e -o Reports/resports \\
       -j ${jmeter_path}/tmp/jmeter_${timestamp}.log'''  
     }
-   stage("Clean work spase"){
-      deleteDir()
-    }
 }
