@@ -23,7 +23,6 @@ node{
       -n "-Jusers=%USERS% -JrumpUp=%RAMP_UP% -Jduration=%DURATION%" \\
       -t ${jmeter_path}/newOne.jmx \\
       -l ${jmeter_path}/tmp/result_${timestamp}.jtl \\
-	   -e -o Reports/resports \\
       -j ${jmeter_path}/tmp/jmeter_${timestamp}.log'''  
     }
 }
