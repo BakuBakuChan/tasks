@@ -12,7 +12,6 @@ string(defaultValue: '1', description: 'in seconds', name: 'RAMP_UP', trim: fals
  stage("Run gatling project"){
     sh label: '', script: '''docker run \\
      -e JAVA_OPTS="-Dusers=${USERS} -Dduration=${DURATION} -DrampUp=${RAMP_UP}" \\
-     -it \\
      --rm \\
      --name gatlingtest \\
      --link=influxdb \\
