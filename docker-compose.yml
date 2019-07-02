@@ -30,7 +30,6 @@ nginx:
   ports:
     - "80:80"
   links:
-    - influxdb
     - grafana
   volumes:
     - /tmp/tasks/nginx.conf:/etc/nginx/nginx.conf
