@@ -22,21 +22,4 @@ grafana:
     - influxdb
   volumes:
     - /tmp/tasks/grafana.ini:/etc/grafana/grafana.ini
-    - /srv/docker/grafana/data:/tmp/grafana
-  networks:
-      - net
-    
-nginx:
-  image: nginx:latest
-  container_name: nginx
-  ports:
-    - "80:80"
-  links:
-    - grafana
-  volumes:
-    - /tmp/tasks/nginx.conf:/etc/nginx/nginx.conf
-   networks:
-      - net
-
-networks:
-  net:    
+    - /srv/docker/grafana/data:/tmp/grafana 
