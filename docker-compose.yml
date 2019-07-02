@@ -18,6 +18,8 @@ grafana:
     - "3030:3000"
   env_file:
     - 'env.grafana'
+  links:
+    - nginx
   volumes:
     - /tmp/tasks/grafana.ini:/etc/grafana/grafana.ini
     - /srv/docker/grafana/data:/tmp/grafana
