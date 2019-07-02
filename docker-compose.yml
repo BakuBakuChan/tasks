@@ -22,4 +22,4 @@ grafana:
     - influxdb
   volumes:
     - /srv/docker/grafana/data:/tmp/grafana
-    - /srv/docker/grafana/conf/defaults.ini :/tmp/tasks/defaults.ini 
+    - /etc/grafana/grafana.ini:/tmp/tasks/grafana.ini 
