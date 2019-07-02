@@ -15,7 +15,7 @@ grafana:
   image: grafana/grafana:latest
   container_name: grafana
   ports:
-    - "3030:3000"
+    - "3000:3030"
   env_file:
     - 'env.grafana'
   links:
