@@ -21,7 +21,4 @@ string(defaultValue: '1', description: 'in seconds', name: 'RAMP_UP', trim: fals
 denvazh/gatling \\
 -s testTaskPerformance.MySimulation'''
     }
-  stage("Clean work spase"){
-      deleteDir()
-    }
 }
