@@ -43,4 +43,5 @@ telegraf:
     - influxdb
   volumes:
     - ./telegraf.conf:/etc/telegraf/telegraf.conf
+    - /var/run/docker.sock:/var/run/docker.sock
     
