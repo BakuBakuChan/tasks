@@ -22,7 +22,7 @@ telegraf:
     - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
     
 grafana:
- image: grafana/grafana:latest
+  image: grafana/grafana:latest
   container_name: grafana
   ports:
     - "3030:3000"
