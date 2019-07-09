@@ -42,5 +42,5 @@ telegraf:
   links:
     - influxdb
   volumes:
-    - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    - ./telegraf.conf:/etc/telegraf/telegraf.conf
     
