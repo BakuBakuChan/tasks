@@ -87,7 +87,9 @@ services:
     restart: always
 
   api:
-    image: reportportal/service-api:4.3.4
+    build:
+      context: ./service-api
+      dockerfile: docker/Dockerfile-develop
     depends_on:
       - mongodb
     environment:
