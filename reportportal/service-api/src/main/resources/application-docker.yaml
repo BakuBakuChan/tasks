@@ -1,0 +1,8 @@
+server:
+  port: 8080
+
+rp:
+  db:
+    host: postgres
+  amqp:
+    host: rabbitmq
