@@ -10,7 +10,7 @@ influxdb:
   env_file:
     - 'env.influxdb'
   volumes:
-    - /tmp/tasks/influxdb.conf:/etc/influxdb/influxdb.conf 
+    - /my_tasks/tasks/influxdb.conf:/etc/influxdb/influxdb.conf 
     - /srv/docker/influxdb/data:/tmp/influxdb/data
     
 grafana:
@@ -23,7 +23,7 @@ grafana:
   links:
     - influxdb
   volumes:
-    - /tmp/tasks/grafana.ini:/etc/grafana/grafana.ini
+    - /my_tasks/tasks/grafana.ini:/etc/grafana/grafana.ini
     - /srv/docker/grafana/data:/tmp/grafana
     
 nginx:
@@ -34,7 +34,7 @@ nginx:
   links:
     - grafana
   volumes:
-    - /tmp/tasks/nginx.conf:/etc/nginx/nginx.conf 
+    - /my_tasks/tasks/nginx.conf:/etc/nginx/nginx.conf 
     
 telegraf:
   image: telegraf:latest
