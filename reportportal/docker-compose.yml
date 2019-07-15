@@ -13,7 +13,7 @@
 version: '2'
 
 services:
-
+ 
   mongodb:
     image: mongo:3.4
 #    ports:
@@ -92,8 +92,8 @@ services:
       dockerfile: docker/Dockerfile-debag
     depends_on:
       - mongodb
-    links:
-      - influxdb
+ #   links:
+ #     - influxdb
     environment:
       - RP_PROFILES=docker
       - JAVA_OPTS=-Xmx1g -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp
