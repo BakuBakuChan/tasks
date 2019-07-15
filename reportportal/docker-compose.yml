@@ -89,7 +89,7 @@ services:
   api:
     build:
       context: ./service-api
-      dockerfile: docker/Dockerfile-develop
+      dockerfile: docker/Dockerfile-debag
     depends_on:
       - mongodb
     environment:
