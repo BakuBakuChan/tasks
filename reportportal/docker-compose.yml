@@ -37,7 +37,9 @@ services:
 
 
   uat:
-    image: reportportal/service-authorization:4.2.0
+    build:
+     context: ./service-authorization
+     dockerfile: docker/Dockerfile-release
     #ports:
     #  - "9999:9999"
     depends_on:
