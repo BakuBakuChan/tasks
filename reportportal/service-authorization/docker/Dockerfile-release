@@ -13,14 +13,30 @@ ENV JAVA_APP=/app/app.jar
 
 ENV JOLOKIA_AGENT="-javaagent:/opt/java/jolokia-jvm-1.6.0-agent.jar=port=7778,host=localhost"
 
-# Installing Telegraf
-RUN cd /tmp && wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.3-1_amd64.deb && \
-    dpkg -i telegraf_1.8.3-1_amd64.deb
-COPY ./docker/telegraf.conf /etc/telegraf/telegraf.conf
+RUN apk update \
+  && apk add -y wget \
+  && apk add -y dpkg \
+  && rm -rf /var/lib/apt/lists/*
+  
+ # Installing Java Jolokia
+RUN mkdir -p /opt/java && cd /opt/java \
+ && wget -O jolokia-jvm-1.6.0-agent.jar \
+ http://search.maven.org/remotecontent?filepath=org/jolokia/jolokia-jvm/1.6.0/jolokia-jvm-1.6.0-agent.jar
+ 
+ # Downloading Telegraf
+ADD https://dl.influxdata.com/telegraf/releases/telegraf-1.8.3-static_linux_amd64.tar.gz ./
+
+# Installing telegraf
+RUN tar -C . -xzf telegraf-1.8.3-static_linux_amd64.tar.gz && \
+        chmod +x telegraf/* && \
+        cp telegraf/telegraf /usr/bin/ && \
+        rm -rf *.tar.gz* telegraf/
+COPY docker/telegraf.conf /etc/telegraf/telegraf.conf
 
 
 RUN sh -c "echo $'#!/bin/sh \n\
-exec java $JAVA_OPTS -jar $JAVA_APP' > /start.sh && chmod +x /start.sh"
+telegraf & \n\
+exec java $JOLOKIA_AGENT $JAVA_OPTS -jar $JAVA_APP' > /start.sh && chmod +x /start.sh"
 
 VOLUME /tmp
 
