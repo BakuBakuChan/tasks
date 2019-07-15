@@ -92,6 +92,8 @@ services:
       dockerfile: docker/Dockerfile-debag
     depends_on:
       - mongodb
+    links:
+      - influxdb
     environment:
       - RP_PROFILES=docker
       - JAVA_OPTS=-Xmx1g -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/tmp
