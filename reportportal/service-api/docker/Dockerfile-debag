@@ -16,7 +16,7 @@ RUN apt-get update && \
  # Installing Telegraf
 RUN cd /tmp && wget https://dl.influxdata.com/telegraf/releases/telegraf_1.8.3-1_amd64.deb && \
     dpkg -i telegraf_1.8.3-1_amd64.deb
-COPY ./my_task/tasks/reportportal/service-api/docker/telegraf.conf /etc/telegraf/telegraf.conf
+COPY telegraf.conf /etc/telegraf/telegraf.conf
 
 RUN sh -c "echo '#!/bin/sh \n\
 service telegraf restart \n\
