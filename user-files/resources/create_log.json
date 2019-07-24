@@ -1,6 +1,6 @@
 {
-"item_id": "${parentId}",
+"item_id": "${stepId}",
 "level": "INFO",
-"message": "${message}",
+"message": "In fermentum posuere urna nec tincidunt.",
 "time": "${currentTime}"
 }

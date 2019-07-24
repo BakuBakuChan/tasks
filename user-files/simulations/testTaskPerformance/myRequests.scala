@@ -1,4 +1,4 @@
-package testTaskPerformance
+package rpTest
 
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -6,8 +6,7 @@ import java.util.Calendar
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 
-
-object SimulationRequests {
+object myRequests {
   /** ***********************************************/
   /*HEADERS*/
   var mainHeaders = Map(
@@ -21,31 +20,37 @@ object SimulationRequests {
   /*POST REQUEST BODIES*/
   var postCreateLaunch =
   http("POST_Create_Launch")
-    .post("/test/launch")
+    .post("/launch")
     .headers(mainHeaders)
     .body(ElFileBody("create_launch.json")).asJson
 
   var postCreateSuite =
     http("POST_Create_Suite")
-      .post("/test/item")
+      .post("/item")
       .headers(mainHeaders)
       .body(ElFileBody("create_suite.json")).asJson
 
-  var postCreateTestOrStep =
+  var postCreateTest =
     http("POST_Create_Test")
-      .post("/test/item/${parentId}")
+      .post("/item/${suiteId}")
       .headers(mainHeaders)
       .body(ElFileBody("create_test.json")).asJson
 
+  var postCreateStep =
+    http("POST_Create_Step")
+      .post("/item/${testId}")
+      .headers(mainHeaders)
+      .body(ElFileBody("create_step.json")).asJson
+
   var postCreateLog =
     http("POST_Create_Log")
-      .post("/test/log")
+      .post("/log")
       .headers(mainHeaders)
       .body(ElFileBody("create_log.json")).asJson
 
   var postCreateLogWithAttach =
     http("POST_Create_Log_With_Attach")
-      .post("/test/log")
+      .post("/log")
       .header("Content-Type", "multipart/form-data")
       .header("Authorization", "bearer 0899ef96-8939-4bc1-b667-8dd59309ca48")
       .bodyPart(ElFileBodyPart("json_request_part", "create_log_with_attach.json")
@@ -57,55 +62,79 @@ object SimulationRequests {
 
 
   /*PUT REQUEST BODIES*/
-  var putFinishItem =
+  var putFinishStep =
     http("PUT_Finish_Item")
-      .put("/test/item/${parentId}")
+      .put("/item/${stepId}")
+      .headers(mainHeaders)
+      .body(ElFileBody("finish_item.json")).asJson
+
+  var putFinishTest =
+    http("PUT_Finish_Item")
+      .put("/item/${testId}")
+      .headers(mainHeaders)
+      .body(ElFileBody("finish_item.json")).asJson
+
+  var putFinishSuit =
+    http("PUT_Finish_Item")
+      .put("/item/${suitId}")
       .headers(mainHeaders)
       .body(ElFileBody("finish_item.json")).asJson
 
 
   var putFinishLaunch =
     http("PUT_Finish_Launch")
-      .put("/test/launch/${launchId}/finish")
+      .put("/launch/${launchId}/finish")
       .headers(mainHeaders)
       .body(ElFileBody("finish_launch.json")).asJson
+
+  var putForceFinishLaunch =
+    http("PUT_Force_Finish_Launch")
+      .put("/launch/${launchId}/stop")
+      .headers(mainHeaders)
+      .body(ElFileBody("finish_launch.json")).asJson
+
 
   /*GET REQUEST BODIES*/
   var getLaunch =
     http("GET_Launch")
-      .get("/test/launch/${launchIdToRead}")
+      .get("/launch/${launchIdToRead}")
       .headers(mainHeaders)
 
   var getLaunches =
     http("GET_Launches")
-      .get("/test/launch")
+      .get("/launch")
+      .headers(mainHeaders)
+
+  var getUnfinishedLaunches =
+    http("GET_Launches")
+      .get("/launch?filter.eq.status=IN_PROGRESS")
       .headers(mainHeaders)
 
   var getSuits =
     http("GET_Suits")
-      .get("/test/item?filter.eq.launch=${launchId}&filter.eq.type=SUITE")
+      .get("/item?filter.eq.launch=${launchId}&filter.eq.type=SUITE")
       .headers(mainHeaders)
 
-  var getItems =
-    http("GET_Items")
-
-      .get("/test/item?filter.eq.parent=${parentId}&filter.eq.launch=${launchId}")
+  var getTest =
+    http("GET_Test")
+      .get("/item?filter.eq.parent=${suiteId}&filter.eq.launch=${launchId}")
       .headers(mainHeaders)
 
-  var getItemByItemId =
-    http("GET_Item_By_Item_Id")
-      .get("/test/item/${itemId}")
+  var getStep =
+    http("GET_Step")
+      .get("/item?filter.eq.parent=${testId}&filter.eq.launch=${launchId}")
       .headers(mainHeaders)
 
   var getLogs =
     http("GET_Logs")
-      .get("/test/log?filter.eq.item=${parentId}")
+      .get("/log?filter.eq.item=${stepId}")
       .headers(mainHeaders)
 
   /** ***********************************************/
 
   /** ***********************************************/
-  /*REQUEST*/
+  /*POST REQUEST*/
+
   var postCreateLaunchRequest = exec(
     postCreateLaunch
 
@@ -117,38 +146,82 @@ object SimulationRequests {
     postCreateSuite
 
       .check(status is (201))
-      .check(jsonPath("$.id").ofType[String].saveAs("parentId"))
+      .check(jsonPath("$.id").ofType[String].saveAs("suiteId"))
   )
 
-
-  var postCreateTestOrStepRequest = exec(
-    postCreateTestOrStep
+  var postCreateTestRequest = exec(
+    postCreateTest
 
       .check(status is (201))
-      .check(jsonPath("$.id").ofType[String].saveAs("parentId"))
+      .check(jsonPath("$.id").ofType[String].saveAs("testId"))
   )
 
-  val postCreateLogRequest = exec(
+  var postCreateStepRequest = exec(
+    postCreateStep
+
+      .check(status is (201))
+      .check(jsonPath("$.id").ofType[String].saveAs("stepId"))
+  )
+
+  var postCreateLogRequest = exec(
     postCreateLog
 
       .check(status is (201))
   )
-  val postCreateLogWithAttachRequest = exec(
+
+  var postCreateLogWithAttachRequest = exec(
     postCreateLogWithAttach
 
       .check(status is (201))
   )
 
-  val putFinishItemRequest = exec(
-    putFinishItem
+  /*PUT REQUEST*/
+  var putFinishStepRequest = exec(
+    putFinishStep
 
       .check(status is (200))
   )
 
-  val putFinishLaunchRequest = exec(
+  var putFinishTestRequest = exec(
+    putFinishTest
+
+      .check(status is (200))
+  )
+
+  var putFinishSuitRequest = exec(
+    putFinishSuit
+
+      .check(status is (200))
+  )
+
+  var putFinishLaunchRequest = exec(
     putFinishLaunch
 
       .check(status is (200))
+  )
+
+  var putForceFinishLaunchRequest = exec(
+    putForceFinishLaunch
+
+      .check(status is (200))
+  )
+
+  /*GET REQUEST*/
+
+  var getLaunchesRequest = exec(
+    getLaunches
+
+      .check(status is (200))
+      .check(jsonPath("$.page.totalElements").ofType[String].saveAs("numberOfLaunches"))
+      .check(jsonPath("$.content[*].id").ofType[String].findAll.saveAs("launchesIds"))
+  )
+
+  var getUnfinishedLaunchesRequest = exec(
+    getLaunches
+
+      .check(status is (200))
+      .check(jsonPath("$.page.totalElements").ofType[String].saveAs("numberOfUnfinishedLaunches"))
+      .check(jsonPath("$.content[*].id").ofType[String].findAll.saveAs("unfinishedLaunchesIds"))
   )
 
   var getSuitsRequest = exec(
@@ -159,85 +232,77 @@ object SimulationRequests {
       .check(jsonPath("$.content[*].id").ofType[String].findAll.saveAs("suitsIds"))
   )
 
-  val getLogsRequest = exec(
-    getLogs
-
-      .check(status is (200))
-      .check(jsonPath("$.page.totalElements").ofType[String].saveAs("numberOfLogs"))
-  )
-
-  val getItemssStepRequest = exec(
-    getItems
-
-      .check(status is (200))
-      .check(jsonPath("$.page.totalElements").ofType[String].saveAs("numberOfSteps"))
-      .check(jsonPath("$.content[*].id").ofType[String].findAll.saveAs("stepsIds"))
-  )
-
-  val getItemssTestsRequest = exec(
-    getItems
+  var getTestsRequest = exec(
+    getTest
 
       .check(status is (200))
       .check(jsonPath("$.page.totalElements").ofType[String].saveAs("numberOfTests"))
       .check(jsonPath("$.content[*].id").ofType[String].findAll.saveAs("testsIds"))
   )
 
-  var getLaunchesRequest = exec(
-    getLaunches
+  var getStepsRequest = exec(
+    getStep
 
       .check(status is (200))
-      .check(jsonPath("$.content[*].id").ofType[String].findAll.saveAs("launchesIds"))
+      .check(jsonPath("$.page.totalElements").ofType[String].saveAs("numberOfSteps"))
+      .check(jsonPath("$.content[*].id").ofType[String].findAll.saveAs("stepsIds"))
   )
+
+  var getLogsRequest = exec(
+    getLogs
+
+      .check(status is (200))
+  )
+
   /** ***********************************************/
 
   /** ***********************************************/
-    /**SESSIONS**/
+  /*SESSIONS*/
+  val debug = exec { session: Session =>
+    println(session("numberOfLaunches").as[Int])
+    println(session("launchesIds").as[Seq[String]])
+    session.set("debag","debag")
+  }
+
+  val currentDate = exec { session: Session =>
+    val DateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+    val myCurrentDate = Calendar.getInstance.getTime
+    val dateFormat = new SimpleDateFormat(DateFormat)
+    val formated = dateFormat.format(myCurrentDate)
+    session.set("currentTime", formated)
+  }
+
   val selectLaunchIdToRead = exec { session: Session =>
     val r = scala.util.Random
     val ids = session("launchesIds").as[Seq[String]]
-    session.set("launchId", ids(r.nextInt(ids.length - 1)))
+    session.set("launchId", ids(r.nextInt(ids.length)))
   }
 
   val selectNumOfSuitsToRead = exec { session: Session =>
     val ids = session("suitsIds").as[Seq[String]]
-    val halfOfNums = (ids.length / 2).toInt
+    val halfOfNums = Math.round(ids.length / 2)
     val iterator = session("suitsIterator").as[Int] + 1
     session.set("suitsToRead", halfOfNums)
       .set("suitsIterator", iterator)
-      .set("suitsIdToRead", ids(iterator))
+      .set("suiteId", ids(iterator))
   }
 
   val selectNumOfTestToRead = exec { session: Session =>
     val ids = session("testsIds").as[Seq[String]]
-    val halfOfNums = (ids.length / 2).toInt
+    val halfOfNums = Math.round(ids.length / 2)
     val iterator = session("testsIterator").as[Int] + 1
     session.set("testsToRead", halfOfNums)
       .set("testsIterator", iterator)
-      .set("testsIdToRead", ids(iterator))
+      .set("testId", ids(iterator))
   }
 
   val selectNumOfStepsToRead = exec { session: Session =>
     val ids = session("stepsIds").as[Seq[String]]
-    val halfOfNums = (ids.length / 2).toInt
+    val halfOfNums = Math.round(ids.length / 2)
     val iterator = session("stepsIterator").as[Int] + 1
     session.set("stepsToRead", halfOfNums)
       .set("stepsIterator", iterator)
-      .set("stepsIdToRead", ids(iterator))
-  }
-
-  val useTest = exec { session: Session =>
-    val id = session("testsIdToRead").as[String]
-    session.set("parentId", id)
-  }
-
-  val useSuit = exec { session: Session =>
-    val id = session("suitsIdToRead").as[String]
-    session.set("parentId", id)
-  }
-
-  val useStep = exec { session: Session =>
-    val id = session("stepsIdToRead").as[String]
-    session.set("parentId", id)
+      .set("stepId", ids(iterator))
   }
 
   val iteratorsInit = exec { session: Session =>
@@ -249,71 +314,12 @@ object SimulationRequests {
       .set("suitsToRead", "0")
   }
 
-
-  val debag = exec { session: Session =>
-    session.set("debag", "debag")
+  val finishLounches = exec{ session: Session =>
+    val ids = session("unfinishedLaunchesIds").as[Seq[String]]
+    val iterator = session("numberOfUnfinishedLaunches").as[Int] - 1
+    session.set("launchId",ids(iterator))
+      .set("numberOfUnfinishedLaunches",iterator)
   }
-
-  val currentDate = exec { session: Session =>
-    val DateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-    val myCurrentDate = Calendar.getInstance.getTime
-    val dateFormat = new SimpleDateFormat(DateFormat)
-    val formated = dateFormat.format(myCurrentDate)
-    session.set("currentTime", formated)
-  }
-
-  val saveSuiteId = exec { session: Session =>
-    val id = session("parentId").as[String]
-    session.set("suitId", id)
-  }
-
-  val saveTest = exec { session: Session =>
-    val id = session("parentId").as[String]
-    session.set("testId", id)
-  }
-
-  val useTestId = exec { session: Session =>
-    val id = session("testId").as[String]
-    session.set("parentId", id).set("type", "TEST")
-  }
-
-  val useSuitId = exec { session: Session =>
-    val id = session("suitId").as[String]
-    session.set("parentId", id)
-  }
-
-
-  val makeTypeTest = exec { session: Session =>
-    session.set("type", "TEST")
-  }
-
-  val testToNull = exec { session: Session =>
-    session.set("numberOfTests", "0")
-  }
-
-  val stepsToNull = exec { session: Session =>
-    session.set("numberOfSteps", "0")
-  }
-
-  val logsToNull = exec { session: Session =>
-    session.set("numberOfLogs", "0")
-  }
-
-  val allToNull = exec { session: Session =>
-    session.set("numberOfSuits", "0")
-      .set("numberOfTests", "0")
-      .set("numberOfSteps", "0")
-      .set("numberOfLogs", "0")
-  }
-
-
-  val typeTest = exec { session: Session =>
-    session.set("type", "TEST").set("name", "Test")
-  }
-
-  val typeStep = exec { session: Session =>
-    session.set("type", "STEP").set("name", "Step")
-  }
-
   /** ***********************************************/
+
 }

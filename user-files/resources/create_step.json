@@ -1,0 +1,8 @@
+{
+  "description": "In fermentum posuere urna nec tincidunt.",
+  "launch_id": "${launchId}",
+  "name": "Step",
+  "retry": "false",
+  "start_time": "${currentTime}",
+  "type": "STEP"
+}

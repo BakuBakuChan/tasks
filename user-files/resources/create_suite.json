@@ -1,7 +1,7 @@
 {
-"description": "${description}", 
+"description": "In fermentum posuere urna nec tincidunt.",
 "launch_id": "${launchId}",
-"name": "Suite", 
+"name": "Suite",
 "retry": "false", 
 "start_time": "${currentTime}",
 "type": "SUITE"

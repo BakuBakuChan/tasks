@@ -1,8 +1,8 @@
 {
-"description": "${description}", 
+"description": "In fermentum posuere urna nec tincidunt.",
 "launch_id": "${launchId}",
-"name": "${name}", 
+"name": "Test",
 "retry": "false",
 "start_time": "${currentTime}",
-"type": "${type}"
+"type": "TEST"
 }
