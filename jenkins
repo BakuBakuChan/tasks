@@ -10,7 +10,7 @@ string(defaultValue: '1', description: 'in seconds', name: 'RAMP_UP', trim: fals
       git branch: 'Reportportal_test', url: 'https://github.com/BakuBakuChan/tasks'
    }
  stage("Run gatling project"){
-      bat label: '', script: '''cd C:\\Users\\Polina_Koriahina\\Desktop\\gatling-charts-highcharts-bundle-3.1.2\\bin
+      bat label: '', script: '''cd C:\\Users\\Polina_Koriahina\\Desktop\\gatling-charts-highcharts-bundle-3.2.0\\bin
       set JAVA_OPTS="-Dusers=%USERS%" "-Dduration=%DURATION%" "-DrampUp=%RAMP_UP%"
       gatling.bat -s rpTest.mySimulation'''
     }
