@@ -7,7 +7,7 @@ string(defaultValue: '60', description: 'in seconds',name: 'DURATION', trim: fal
 string(defaultValue: '1', description: 'in seconds', name: 'RAMP_UP', trim: false)])])
 
  stage("git pull"){
-      git branch: 'Performance_task', url: 'https://github.com/BakuBakuChan/tasks'
+      git branch: 'Reportportal_test', url: 'https://github.com/BakuBakuChan/tasks'
    }
  stage("Run gatling project"){
     sh label: '', script: '''docker run \\
@@ -19,6 +19,6 @@ string(defaultValue: '1', description: 'in seconds', name: 'RAMP_UP', trim: fals
     -v /var/lib/jenkins/workspace/Gatling/user-files:/opt/gatling/user-files \\
     -v /tmp/tasks/gatling/results:/opt/gatling/results \\
 denvazh/gatling \\
--s testTaskPerformance.MySimulation'''
+-s testTaskPerformance.Simulation'''
     }
 }
