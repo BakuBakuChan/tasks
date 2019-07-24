@@ -76,7 +76,7 @@ object myRequests {
 
   var putFinishSuit =
     http("PUT_Finish_Item")
-      .put("/item/${suitId}")
+      .put("/item/${suiteId}")
       .headers(mainHeaders)
       .body(ElFileBody("finish_item.json")).asJson
 
