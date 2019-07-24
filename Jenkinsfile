@@ -19,6 +19,6 @@ string(defaultValue: '1', description: 'in seconds', name: 'RAMP_UP', trim: fals
     -v /var/lib/jenkins/workspace/Gatling/user-files:/opt/gatling/user-files \\
     -v /tmp/tasks/gatling/results:/opt/gatling/results \\
 denvazh/gatling \\
--s reportportalSimulation.MySimulation'''
+-s testTaskPerformance.MySimulation'''
     }
 }
