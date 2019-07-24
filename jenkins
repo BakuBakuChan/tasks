@@ -1,0 +1,17 @@
+node{
+
+properties(
+[parameters(
+[string(defaultValue: '1', description: '', name: 'USERS', trim: false), 
+string(defaultValue: '60', description: 'in seconds',name: 'DURATION', trim: false),
+string(defaultValue: '1', description: 'in seconds', name: 'RAMP_UP', trim: false)])])
+
+ stage("git pull"){
+      git branch: 'Reportportal_test', url: 'https://github.com/BakuBakuChan/tasks'
+   }
+ stage("Run gatling project"){
+      bat label: '', script: '''cd gatling-charts-highcharts-bundle-3.1.2\\bin
+      set JAVA_OPTS="-Dusers=%USERS%" "-Dduration=%DURATION%" "-DrampUp=%RAMP_UP%"
+      gatling.bat -s rpTest.mySimulation'''
+    }
+}
