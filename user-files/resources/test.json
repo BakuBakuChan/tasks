@@ -1,0 +1,11 @@
+[
+{
+"file":{
+"name": "cat1.jpg"
+},
+"item_id": "${parentId}",
+"level":"ERROR",
+"message":"YOUR_MESSAGE",
+"time":"2019-11-15T19:35:55.006Z"
+}
+]

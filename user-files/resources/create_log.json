@@ -1,0 +1,6 @@
+{
+"item_id": "${parentId}",
+"level": "INFO",
+"message": "${message}",
+"time": "${currentTime}"
+}

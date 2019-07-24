@@ -1,0 +1,11 @@
+[
+{
+"file":{
+"name": "${fileName}"
+},
+"item_id": "${parentId}",
+"level":"${level}",
+"message":"${message}",
+"time":"${currentTime}"
+}
+]

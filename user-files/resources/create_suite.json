@@ -1,0 +1,8 @@
+{
+"description": "${description}", 
+"launch_id": "${launchId}",
+"name": "Suite", 
+"retry": "false", 
+"start_time": "${currentTime}",
+"type": "SUITE"
+}
