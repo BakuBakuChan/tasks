@@ -15,8 +15,8 @@ string(defaultValue: '1', description: 'in seconds', name: 'RAMP_UP', trim: fals
      --rm \\
      --name gatlingtest \\
      --link=influxdb \\
-    -v /var/lib/jenkins/workspace/Gatling/gatling.conf:/opt/gatling/conf/gatling.conf \\
-    -v /var/lib/jenkins/workspace/Gatling/user-files:/opt/gatling/user-files \\
+    -v /var/lib/jenkins/workspace/reportPortal_OLD/gatling.conf:/opt/gatling/conf/gatling.conf \\
+    -v /var/lib/jenkins/workspace/reportPortal_OLD/user-files:/opt/gatling/user-files \\
     -v /tmp/tasks/gatling/results:/opt/gatling/results \\
 denvazh/gatling \\
 -s testTaskPerformance.RPSimulation'''
